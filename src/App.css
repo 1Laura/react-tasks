@@ -2,9 +2,14 @@
     text-align: center;
 }
 
-.card {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #595959;
-    border-radius: 5px;
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cookie {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 5em;
+    transition: transform 0.2s ease;
 }

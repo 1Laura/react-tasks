@@ -3,22 +3,25 @@ import './App.css';
 import {use, useState} from "react";
 
 function App() {
-    const [getCounter, setCounter] = useState(0);
+    const [count, setCount] = useState(0);
+    const [getRotateCookie, setRotateCookie] = useState(0);
 
-    function addCounter() {
-        setCounter(getCounter + 1);
-    }
+    const rotateCookie = () => {
+        setCount(count + 1);
+        setRotateCookie(getRotateCookie + 5)
+    };
 
     return (
-        <div className="App">
-            <div className="card">
-                <h2>counter: {getCounter}</h2>
-                <button onClick={addCounter}>Add counter</button>
+        <div className="container">
+            <h1>🍪 Cookie Counter</h1>
+            <div className={"cookie "} onClick={rotateCookie} style={{transform: `rotate(${getRotateCookie}deg)`}}
+            >
+                🍪
             </div>
+            <p style={{fontSize: "2em"}}>{count}</p>
 
         </div>
-    )
-        ;
+    );
 }
 
 export default App;
