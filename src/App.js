@@ -2,41 +2,24 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
-    const [getEmoji, setEmoji] = useState("👋");
+    const [selected, setSelected] = useState(0);
 
-
-    // 1 variant
-    function updateEmoji(emoji) {
-        setEmoji(emoji);
-    }
 
     return (
 
         <div className="container">
-            <div className="emoji">{getEmoji}</div>
-
-            <div className="buttons">
-                <button onClick={() => {
-                    setEmoji("🙂")
-                }}>happy
-                </button>
-                <button onClick={() => {
-                    setEmoji("😔")
-                }}>sad
-                </button>
-                <button onClick={() => {
-                    setEmoji("😠")
-                }}>angry
-                </button>
-                <button onClick={() => {
-                    setEmoji("😯")
-                }}>surprised
-                </button>
+            <div className={`circle ${selected === 1 ? "selected" : ""}`} onClick={() => setSelected(1)}>
+            </div>
+            <div className={`circle ${selected === 2 ? "selected" : ""}`} onClick={() => setSelected(2)}>
+            </div>
+            <div className={`circle ${selected === 3 ? "selected" : ""}`} onClick={() => setSelected(3)}>
+            </div>
+            <div className={`circle ${selected === 4 ? "selected" : ""}`} onClick={() => setSelected(4)}>
             </div>
         </div>
 
-    )
-        ;
+
+    );
 
 }
 
