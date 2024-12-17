@@ -8,14 +8,8 @@
     margin: 50px;
 }
 
-.progress-bar {
-    margin: 10px auto;
-    width: 800px;
-    height: 30px;
-    border: 1px solid #8e8e8e;
-    border-radius: 5px;
-    background-color: #c1c1c1;
-    overflow: hidden;
+.emoji {
+    font-size: 150px;
 }
 
 
@@ -25,10 +19,4 @@
     justify-content: center;
     margin: 10px auto;
     gap: 10px;
-}
-
-.progress {
-    height: 30px;
-    color: #308a11;
-    overflow: hidden;
 }
