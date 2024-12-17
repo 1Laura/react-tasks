@@ -3,8 +3,9 @@ import {useState} from "react";
 
 function App() {
     const [getEmoji, setEmoji] = useState("👋");
-    const [getProgressWidth, setProgressWidth] = useState(0);
 
+
+    // 1 variant
     function updateEmoji(emoji) {
         setEmoji(emoji);
     }
@@ -15,21 +16,20 @@ function App() {
             <div className="emoji">{getEmoji}</div>
 
             <div className="buttons">
-
                 <button onClick={() => {
-                    updateEmoji("🙂")
+                    setEmoji("🙂")
                 }}>happy
                 </button>
                 <button onClick={() => {
-                    updateEmoji("😔")
+                    setEmoji("😔")
                 }}>sad
                 </button>
                 <button onClick={() => {
-                    updateEmoji("😠")
+                    setEmoji("😠")
                 }}>angry
                 </button>
                 <button onClick={() => {
-                    updateEmoji("😯")
+                    setEmoji("😯")
                 }}>surprised
                 </button>
             </div>
