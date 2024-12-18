@@ -15,14 +15,7 @@
     background-color: #4242fd;
 }
 
-.progress {
-    height: 50px;
-    width: 400px;
-    border: 1px solid #989898;
-    background-color: #dddddd;
-    justify-self: center;
-}
-
-.progress > div {
-    height: 50px;
+.card p {
+    font-size: 150px;
+    margin: 0;
 }

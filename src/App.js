@@ -2,33 +2,43 @@ import './App.css';
 import {useEffect, useState} from "react";
 
 function App() {
-    const [num, setNum] = useState(0);
-    const [color, setColor] = useState("green");
+    const [name, setName] = useState("John");
+    const [emoji, setEmoji] = useState("😆");
     useEffect(() => {
-        if (num > 30 && num < 50) {
-            setColor("yellow");
+        if (name === "Brian") {
+            setEmoji("😫");
         }
-        if (num > 50 && num < 70) {
-            setColor("orange");
+        if (name === "Linda") {
+            setEmoji("🤩");
         }
-        if (num > 70) {
-            setColor("red");
+        if (name === "Alice") {
+            setEmoji("😡");
         }
-    }, [num]);
+        if (name === "Peter") {
+            setEmoji("🥴");
+        }
+        if (name === "Robert") {
+            setEmoji("😲");
+        }
+        if (name === "Isabella") {
+            setEmoji("😵");
+        }
+    }, [name]);
 
     return (
 
         <div className="container">
-            <div className="progress">
-                <div style={{width: num + "%", backgroundColor: color}}></div>
+            <div className="card">
+                <h3>{name}</h3>
+                <p>{emoji}</p>
             </div>
-            <h1>Number:{num}</h1>
-            <button onClick={() => setNum(num + 5)}>Add num</button>
+            <button onClick={() => setName("Brian")}>Brian</button>
+            <button onClick={() => setName("Linda")}>Linda</button>
+            <button onClick={() => setName("Peter")}>Peter</button>
+            <button onClick={() => setName("Alice")}>Alice</button>
+            <button onClick={() => setName("Robert")}>Robert</button>
         </div>
-
-
     );
-
 }
 
 export default App;
