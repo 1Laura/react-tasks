@@ -1,21 +1,29 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
-    const [selected, setSelected] = useState(0);
-
+    const [num, setNum] = useState(0);
+    const [color, setColor] = useState("green");
+    useEffect(() => {
+        if (num > 30 && num < 50) {
+            setColor("yellow");
+        }
+        if (num > 50 && num < 70) {
+            setColor("orange");
+        }
+        if (num > 70) {
+            setColor("red");
+        }
+    }, [num]);
 
     return (
 
         <div className="container">
-            <div className={`circle ${selected === 1 ? "selected" : ""}`} onClick={() => setSelected(1)}>
+            <div className="progress">
+                <div style={{width: num + "%", backgroundColor: color}}></div>
             </div>
-            <div className={`circle ${selected === 2 ? "selected" : ""}`} onClick={() => setSelected(2)}>
-            </div>
-            <div className={`circle ${selected === 3 ? "selected" : ""}`} onClick={() => setSelected(3)}>
-            </div>
-            <div className={`circle ${selected === 4 ? "selected" : ""}`} onClick={() => setSelected(4)}>
-            </div>
+            <h1>Number:{num}</h1>
+            <button onClick={() => setNum(num + 5)}>Add num</button>
         </div>
 
 
