@@ -2,57 +2,56 @@ import './App.css';
 import {useEffect, useRef, useState} from "react";
 
 function App() {
+
     const inputName = useRef();
+    const inputAge = useRef();
+    const inputCity = useRef();
     const inputEmail = useRef();
-    const inputPass = useRef();
-    const inputPassRepeat = useRef();
+    const inputPhone = useRef();
 
-    const [color, setColor] = useState("");
+    const [userData, setUserData] = useState({
+        userName: "Laura",
+        age: 50,
+        city: "Vilnius",
+        email: "bal@gmail.com",
+        phone: "+37060080860"
+    })
 
+    function updateUserData() {
+        let userDataCopy = {...userData};
 
-    function validateInputFields() {
-        if (inputName.current.value.length > 4 && inputName.current.value.length < 10) {
-            setColor("#A2FF8DFF");
-            console.log("Name is valid");
-        } else {
-            setColor("#ff5e5e");
-            console.log("Name is not valid");
-        }
+        userDataCopy.userName = inputName.current.value;
+        console.log(userDataCopy.userName)
+        userDataCopy.age = inputAge.current.value;
+        userDataCopy.city = inputCity.current.value;
+        userDataCopy.email = inputEmail.current.value;
+        userDataCopy.phone = inputPhone.current.value;
 
-        if (/\S+@\S+\.\S+/.test(inputEmail.current.value)) {
-            setColor("#A2FF8DFF");
-            console.log("Email is valid");
-        } else {
-            setColor("#ff5e5e");
-            console.log("Email is not valid");
-        }
-
-
-        if (inputPass.current.value.length > 4 && inputName.current.value.length < 10) {
-            setColor("#A2FF8DFF");
-            console.log("pass is valid");
-        } else {
-            setColor("#ff5e5e");
-            console.log("pass is not valid");
-        }
-
-        if (inputPassRepeat.current.value === inputPass.current.value) {
-            setColor("#A2FF8DFF");
-            console.log("pass is matching");
-        } else {
-            setColor("#ff5e5e");
-            console.log("Pass is not matching");
-        }
+        setUserData(userDataCopy);
     }
+
 
     return (
         <div className="container">
             <div className="card">
-                <input type="text" id="username" placeholder="User name" ref={inputName} style={{backgroundColor: color}}/>
-                <input type="email" placeholder="User email" ref={inputEmail} style={{backgroundColor: color}}/>
-                <input type="password" placeholder="User pass" ref={inputPass} style={{backgroundColor: color}}/>
-                <input type="password" placeholder="Repeat pass" ref={inputPassRepeat} style={{backgroundColor: color}}/>
-                <button type="submit" value="Submit" onClick={validateInputFields}>Submit</button>
+                <p>Name: {userData.userName}</p>
+                <p>Age: {userData.age}</p>
+                <p>City: {userData.city}</p>
+                <p>Email: {userData.email}</p>
+                <p>Phone: {userData.phone}</p>
+            </div>
+
+            <div className="card-input">
+                <select name="" id="">
+                    <option value="username"></option>
+                    
+                </select>
+                <input type="text" placeholder="Name" ref={inputName}/>
+                <input type="text" placeholder="Age" ref={inputAge}/>
+                <input type="email" placeholder="City" ref={inputCity}/>
+                <input type="password" placeholder="Email" ref={inputEmail}/>
+                <input type="password" placeholder="Phone" ref={inputPhone}/>
+                <button type="submit" value="Submit" onClick={updateUserData}>Update</button>
             </div>
         </div>
     );

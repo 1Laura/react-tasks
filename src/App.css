@@ -6,7 +6,7 @@
     padding: 20px;
     text-align: center;
     margin: 50px;
-    display: flex;
+    /*display: flex;*/
     justify-self: center;
 }
 
@@ -15,9 +15,6 @@
     background-color: #a2ff8d;
 }
 
-.card {
-
-}
 
 input {
     display: block;
