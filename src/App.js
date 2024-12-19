@@ -3,56 +3,137 @@ import {useEffect, useRef, useState} from "react";
 
 function App() {
 
-    const inputName = useRef();
-    const inputAge = useRef();
-    const inputCity = useRef();
-    const inputEmail = useRef();
-    const inputPhone = useRef();
-
-    const [userData, setUserData] = useState({
-        userName: "Laura",
-        age: 50,
-        city: "Vilnius",
-        email: "bal@gmail.com",
-        phone: "+37060080860"
-    })
-
-    function updateUserData() {
-        let userDataCopy = {...userData};
-
-        userDataCopy.userName = inputName.current.value;
-        console.log(userDataCopy.userName)
-        userDataCopy.age = inputAge.current.value;
-        userDataCopy.city = inputCity.current.value;
-        userDataCopy.email = inputEmail.current.value;
-        userDataCopy.phone = inputPhone.current.value;
-
-        setUserData(userDataCopy);
-    }
+    const toDoListArr = [
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 2,
+            "title": "quis ut nam facilis et officia qui",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 3,
+            "title": "fugiat veniam minus",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 4,
+            "title": "et porro tempora",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 5,
+            "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 6,
+            "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 7,
+            "title": "illo expedita consequatur quia in",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 8,
+            "title": "quo adipisci enim quam ut ab",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 9,
+            "title": "molestiae perspiciatis ipsa",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 10,
+            "title": "illo est ratione doloremque quia maiores aut",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 11,
+            "title": "vero rerum temporibus dolor",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 12,
+            "title": "ipsa repellendus fugit nisi",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 13,
+            "title": "et doloremque nulla",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 14,
+            "title": "repellendus sunt dolores architecto voluptatum",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 15,
+            "title": "ab voluptatum amet voluptas",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 16,
+            "title": "accusamus eos facilis sint et aut voluptatem",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 17,
+            "title": "quo laboriosam deleniti aut qui",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 18,
+            "title": "dolorum est consequatur ea mollitia in culpa",
+            "completed": false
+        },
+        {
+            "userId": 1,
+            "id": 19,
+            "title": "molestiae ipsa aut voluptatibus pariatur dolor nihil",
+            "completed": true
+        },
+        {
+            "userId": 1,
+            "id": 20,
+            "title": "ullam nobis libero sapiente ad optio sint",
+            "completed": true
+        },];
 
 
     return (
         <div className="container">
-            <div className="card">
-                <p>Name: {userData.userName}</p>
-                <p>Age: {userData.age}</p>
-                <p>City: {userData.city}</p>
-                <p>Email: {userData.email}</p>
-                <p>Phone: {userData.phone}</p>
-            </div>
 
-            <div className="card-input">
-                <select name="" id="">
-                    <option value="username"></option>
-                    
-                </select>
-                <input type="text" placeholder="Name" ref={inputName}/>
-                <input type="text" placeholder="Age" ref={inputAge}/>
-                <input type="email" placeholder="City" ref={inputCity}/>
-                <input type="password" placeholder="Email" ref={inputEmail}/>
-                <input type="password" placeholder="Phone" ref={inputPhone}/>
-                <button type="submit" value="Submit" onClick={updateUserData}>Update</button>
-            </div>
+            {toDoListArr.map((item, index) =>
+                <div className="to-do-block" key={index} style={{backgroundColor: !item.completed ? "#b3ff96" : "#ffa0a0"}}>
+                    <p>{item.title}</p>
+                </div>
+            )}
         </div>
     );
 }
