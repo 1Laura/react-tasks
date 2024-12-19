@@ -1,42 +1,59 @@
 import './App.css';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
-    const [name, setName] = useState("John");
-    const [emoji, setEmoji] = useState("😆");
-    useEffect(() => {
-        if (name === "Brian") {
-            setEmoji("😫");
+    const inputName = useRef();
+    const inputEmail = useRef();
+    const inputPass = useRef();
+    const inputPassRepeat = useRef();
+
+    const [color, setColor] = useState("");
+
+
+    function validateInputFields() {
+        if (inputName.current.value.length > 4 && inputName.current.value.length < 10) {
+            setColor("#A2FF8DFF");
+            console.log("Name is valid");
+        } else {
+            setColor("#ff5e5e");
+            console.log("Name is not valid");
         }
-        if (name === "Linda") {
-            setEmoji("🤩");
+
+        if (/\S+@\S+\.\S+/.test(inputEmail.current.value)) {
+            setColor("#A2FF8DFF");
+            console.log("Email is valid");
+        } else {
+            setColor("#ff5e5e");
+            console.log("Email is not valid");
         }
-        if (name === "Alice") {
-            setEmoji("😡");
+
+
+        if (inputPass.current.value.length > 4 && inputName.current.value.length < 10) {
+            setColor("#A2FF8DFF");
+            console.log("pass is valid");
+        } else {
+            setColor("#ff5e5e");
+            console.log("pass is not valid");
         }
-        if (name === "Peter") {
-            setEmoji("🥴");
+
+        if (inputPassRepeat.current.value === inputPass.current.value) {
+            setColor("#A2FF8DFF");
+            console.log("pass is matching");
+        } else {
+            setColor("#ff5e5e");
+            console.log("Pass is not matching");
         }
-        if (name === "Robert") {
-            setEmoji("😲");
-        }
-        if (name === "Isabella") {
-            setEmoji("😵");
-        }
-    }, [name]);
+    }
 
     return (
-
         <div className="container">
             <div className="card">
-                <h3>{name}</h3>
-                <p>{emoji}</p>
+                <input type="text" id="username" placeholder="User name" ref={inputName} style={{backgroundColor: color}}/>
+                <input type="email" placeholder="User email" ref={inputEmail} style={{backgroundColor: color}}/>
+                <input type="password" placeholder="User pass" ref={inputPass} style={{backgroundColor: color}}/>
+                <input type="password" placeholder="Repeat pass" ref={inputPassRepeat} style={{backgroundColor: color}}/>
+                <button type="submit" value="Submit" onClick={validateInputFields}>Submit</button>
             </div>
-            <button onClick={() => setName("Brian")}>Brian</button>
-            <button onClick={() => setName("Linda")}>Linda</button>
-            <button onClick={() => setName("Peter")}>Peter</button>
-            <button onClick={() => setName("Alice")}>Alice</button>
-            <button onClick={() => setName("Robert")}>Robert</button>
         </div>
     );
 }

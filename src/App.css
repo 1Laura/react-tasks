@@ -6,20 +6,25 @@
     padding: 20px;
     text-align: center;
     margin: 50px;
-    /*display: flex;*/
-    /*flex-direction: row;*/
+    display: flex;
+    justify-self: center;
 }
 
 
 .selected {
-    background-color: #4242fd;
+    background-color: #a2ff8d;
 }
 
-.card p {
-    font-size: 150px;
-    margin: 0;
+.card {
+
+}
+
+input {
+    display: block;
+    margin: 10px;
 }
 
 button {
+    display: block;
     margin: 10px;
 }
