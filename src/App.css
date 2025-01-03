@@ -32,3 +32,40 @@ button {
     margin: 5px;
     padding: 2px;
 }
+
+.color-block {
+    height: 50px;
+    width: 70px;
+    border: 1px solid #676767;
+    border-radius: 5px;
+    align-content: center;
+    margin: 5px;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+
+}
+
+input {
+    height: 30px;
+}
+
+.block {
+    border: 1px solid #757575;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.select-block {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+select {
+    height: 37px;
+    align-self: center;
+}
