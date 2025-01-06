@@ -12,12 +12,13 @@ function App() {
         const newUserNameGenderColor = {
             name: inputName.current.value,
             gender: selectGender.current.value,
-            color: colorSelected
+            color: colorSelected,
         }
         console.log(newUserNameGenderColor);
-        const userNameGenderColorCopy = [...userNameGenderColor];
-        userNameGenderColorCopy.push(newUserNameGenderColor);
-        setUserNameGenderColor(userNameGenderColorCopy);
+        // const userNameGenderColorCopy = [...userNameGenderColor];
+        // userNameGenderColorCopy.push(newUserNameGenderColor);
+        // const userNameGenderColorCopy = [...userNameGenderColor, newUserNameGenderColor];
+        setUserNameGenderColor([...userNameGenderColor, newUserNameGenderColor]);
     }
 
     const [text, setText] = useState([]);
