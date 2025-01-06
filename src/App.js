@@ -5,19 +5,19 @@ function App() {
     const colors = ["red", "blue", "green", "yellow", "pink", "orange"];
     const inputName = useRef("");
 
-    const [text, setText] = useState([
-        {
-            "text": "Hi",
-            "textLength": 2,
-        }
-    ]);
+    const [text, setText] = useState([]);
     const textInput = useRef("");
 
     function addText() {
-        const newText = textInput.current.value;
-        const newTextLength = newText.length;
-        console.log(newText, newTextLength);
-        setText([...text, {text: newText, textLength: newTextLength}]);
+        const newTextValue = {
+            value: textInput.current.value,
+            length: textInput.current.value.length
+        };
+        const textCopy = [...text];
+        textCopy.push(newTextValue);
+        // console.log(newText, newTextLength);
+        setText(textCopy);
+        textInput.current.value = "";
     }
 
     const inpRef = useRef();
@@ -42,11 +42,10 @@ function App() {
     return (
         <div className="container ">
             <div className="text-length-container">
-
                 {text.map((text, index) =>
                     <div className="text-block" key={index}>
-                        <p>Text: {text.text}</p>
-                        <p>Text length: {text.textLength}</p>
+                        <p>Text: {text.value}</p>
+                        <p>Text length: {text.length}</p>
                     </div>
                 )}
                 <div className="input-block">
