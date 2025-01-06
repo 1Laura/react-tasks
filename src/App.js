@@ -250,7 +250,7 @@ function App() {
             "families": ["gray", "slate", "dark"]
         },
     ]
-    const [selectedColor, setSelectedColor] = useState("null")
+    const [selectedColor, setSelectedColor] = useState("")
 
     return (
         <div className="container">
