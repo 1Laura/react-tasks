@@ -52,7 +52,8 @@ input {
     height: 30px;
 }
 
-.block {
+.select-container,
+.text-length-container {
     border: 1px solid #757575;
     border-radius: 5px;
     padding: 20px;
@@ -68,4 +69,17 @@ input {
 select {
     height: 37px;
     align-self: center;
+}
+
+.text-block {
+    border: 1px solid #757575;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2px;
+}
+
+.input-block {
+    justify-items: center;
 }

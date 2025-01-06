@@ -3,17 +3,25 @@ import {useEffect, useRef, useState} from "react";
 
 function App() {
     const colors = ["red", "blue", "green", "yellow", "pink", "orange"];
-    const [data, setData] = useState([
+    const inputName = useRef("");
+
+    const [text, setText] = useState([
         {
-            "text": "Hello",
-            "textLength": 5,
+            "text": "Hi",
+            "textLength": 2,
         }
     ]);
-    const inputName = useRef("");
+    const textInput = useRef("");
+
+    function addText() {
+        const newText = textInput.current.value;
+        const newTextLength = newText.length;
+        console.log(newText, newTextLength);
+        setText([...text, {text: newText, textLength: newTextLength}]);
+    }
 
     const inpRef = useRef();
     const selectRef = useRef();
-
     const [user, setUser] = useState({
         username: "John",
         age: 25,
@@ -32,8 +40,22 @@ function App() {
     }
 
     return (
-        <div className="container">
-            <div className="block">
+        <div className="container ">
+            <div className="text-length-container">
+
+                {text.map((text, index) =>
+                    <div className="text-block" key={index}>
+                        <p>Text: {text.text}</p>
+                        <p>Text length: {text.textLength}</p>
+                    </div>
+                )}
+                <div className="input-block">
+                    <input type="text" placeholder="enter word" ref={textInput}/>
+                    <button onClick={addText}>Add text</button>
+                </div>
+            </div>
+
+            <div className="select-container">
                 <div>
                     <h3>Change user data</h3>
                     <p>Username: {user.username}</p>
