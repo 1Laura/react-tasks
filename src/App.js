@@ -2,8 +2,23 @@ import './App.css';
 import {useEffect, useRef, useState} from "react";
 
 function App() {
-    const colors = ["red", "blue", "green", "yellow", "pink", "orange"];
+    const colors = ["red", "lightblue", "green", "yellow", "pink", "orange"];
+    const [color, setColor] = useState("")
     const inputName = useRef("");
+    const selectGender = useRef();
+    const [userNameGenderColor, setUserNameGenderColor] = useState([]);
+
+    function updateNameGenderColor() {
+        const newUserNameGenderColor = {
+            name: inputName.current.value,
+            gender: selectGender.current.value,
+            color: color
+        }
+        console.log(newUserNameGenderColor);
+        const userNameGenderColorCopy = [...userNameGenderColor];
+        userNameGenderColorCopy.push(newUserNameGenderColor);
+        setUserNameGenderColor(userNameGenderColorCopy);
+    }
 
     const [text, setText] = useState([]);
     const textInput = useRef("");
@@ -15,7 +30,6 @@ function App() {
         };
         const textCopy = [...text];
         textCopy.push(newTextValue);
-        // console.log(newText, newTextLength);
         setText(textCopy);
         textInput.current.value = "";
     }
@@ -41,6 +55,28 @@ function App() {
 
     return (
         <div className="container ">
+            <div className="colors-container">
+                {userNameGenderColor.map((userInfo, index) =>
+                    <div className="render" style={{backgroundColor: userInfo.color}} key={index}>
+                        <p><span className="strong">Name: </span>{userInfo.name}</p>
+                        <p><span className="strong">Gender: </span>{userInfo.gender}</p>
+                    </div>
+                )}
+                <div className="colors">
+                    {colors.map((color, index) =>
+                        <div className="color-block strong" style={{backgroundColor: color}} key={index} onClick={() => setColor(color)}></div>
+                    )}
+                </div>
+                <div className="select-block">
+                    <select ref={selectGender}>
+                        <option value="man">Male</option>
+                        <option value="women">Female</option>
+                    </select>
+                    <input type="text" placeholder="Enter name" ref={inputName}/>
+                    <button onClick={updateNameGenderColor}>Add</button>
+                </div>
+            </div>
+
             <div className="text-length-container">
                 {text.map((text, index) =>
                     <div className="text-block" key={index}>
@@ -70,18 +106,6 @@ function App() {
                     <input type="text" ref={inpRef} placeholder="new value"/>
                     <button onClick={changeUser}>Change username</button>
                 </div>
-            </div>
-
-            <div className="colors">
-                {colors.map((color, index) =>
-                    <div className="color-block" style={{backgroundColor: color}} key={index}>{color}</div>
-                )}
-                <select>
-                    <option value=""></option>
-                </select>
-                <input type="text" placeholder="Name" ref={inputName}/>
-
-                <button>Add</button>
             </div>
         </div>
     );

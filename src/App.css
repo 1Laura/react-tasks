@@ -45,7 +45,6 @@ button {
 .colors {
     display: flex;
     justify-content: center;
-
 }
 
 input {
@@ -53,7 +52,8 @@ input {
 }
 
 .select-container,
-.text-length-container {
+.text-length-container,
+.colors-container {
     border: 1px solid #757575;
     border-radius: 5px;
     padding: 20px;
@@ -71,6 +71,10 @@ select {
     align-self: center;
 }
 
+.strong {
+    font-weight: 600;
+}
+
 .text-block {
     border: 1px solid #757575;
     border-radius: 5px;
@@ -82,4 +86,12 @@ select {
 
 .input-block {
     justify-items: center;
+}
+
+.render {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    margin: 2px;
 }
