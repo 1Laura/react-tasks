@@ -12,7 +12,7 @@
 
 
 .selected {
-    background-color: #a2ff8d;
+    border: 2px solid #252525;
 }
 
 
@@ -36,8 +36,6 @@ button {
 .color-block {
     height: 50px;
     width: 70px;
-    border: 1px solid #676767;
-    border-radius: 5px;
     align-content: center;
     margin: 5px;
 }

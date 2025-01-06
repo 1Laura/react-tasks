@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 
 function App() {
     const colors = ["red", "lightblue", "green", "yellow", "pink", "orange"];
-    const [color, setColor] = useState("")
+    const [colorSelected, setColorSelected] = useState("white")
     const inputName = useRef("");
     const selectGender = useRef();
     const [userNameGenderColor, setUserNameGenderColor] = useState([]);
@@ -12,7 +12,7 @@ function App() {
         const newUserNameGenderColor = {
             name: inputName.current.value,
             gender: selectGender.current.value,
-            color: color
+            color: colorSelected
         }
         console.log(newUserNameGenderColor);
         const userNameGenderColorCopy = [...userNameGenderColor];
@@ -64,7 +64,7 @@ function App() {
                 )}
                 <div className="colors">
                     {colors.map((color, index) =>
-                        <div className="color-block strong" style={{backgroundColor: color}} key={index} onClick={() => setColor(color)}></div>
+                        <div className={`color-block strong ${colorSelected === color && "selected"}`} style={{backgroundColor: color}} key={index} onClick={() => setColorSelected(color)}></div>
                     )}
                 </div>
                 <div className="select-block">
