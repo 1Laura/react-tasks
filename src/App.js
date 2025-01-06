@@ -250,31 +250,63 @@ function App() {
             "families": ["gray", "slate", "dark"]
         },
     ]
-    const [selectedColor, setSelectedColor] = useState("")
+    const [selectedColor, setSelectedColor] = useState(null);
+    const [colorSelectedByAndrius, setColorSelectedByAndrius] = useState(null);
 
     return (
         <div className="container">
             <div className="colors-container">
 
-                <div className="render" style={{backgroundColor: selectedColor}}>
-                    {colorsArray.map((color, index) =>
-                        selectedColor === color.hex && (
-                            <div key={index}>
-                                <p>Color Name: {color.name}</p>
+                <div className="render" style={{ backgroundColor: selectedColor?.hex || 'transparent' }}>
+                    {selectedColor && (
+                            <div>
+                                <p>Color Name: {selectedColor.name}</p>
                                 <div className="families-container">
-                                    {color.families.map((family, familyIndex) => (
-                                        <div key={familyIndex} className="colors-block-families" style={{backgroundColor: family}}>
+                                    {selectedColor.families.map((family, familyIndex) =>
+                                        <div key={familyIndex}
+                                             className="colors-block-families"
+                                             style={{backgroundColor: family}}>
                                             {family}
                                         </div>
-                                    ))}
+                                    )}
                                 </div>
                             </div>
-                        ))}
+                        )}
                 </div>
 
                 <div className="colors">
-                    {colorsArray.map((color, index) =>
-                        <div className={`color-block`} key={index} style={{backgroundColor: color.hex}} onClick={() => setSelectedColor(color.hex)}></div>
+                    {colorsArray.map((colorItem, index) =>
+                        <div className={`color-block`}
+                             key={index}
+                             style={{backgroundColor: colorItem.hex}}
+                             onClick={() => setSelectedColor(colorItem)}>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className="by-Andrius">
+                <div className="d-flex j-center">
+                    {colorSelectedByAndrius ?
+                        <div className="render" style={{backgroundColor: colorSelectedByAndrius.hex}}>
+                            <p>{colorSelectedByAndrius.name}</p>
+                            <div className="families-container">
+                                {colorSelectedByAndrius.families.map((x, i) =>
+                                    <div className="colors-block-families"
+                                         style={{backgroundColor: x}}></div>)}
+                            </div>
+                        </div> :
+                        <div className="render" style={{backgroundColor: "#f7f7f7"}}>
+                        </div>
+                    }
+                </div>
+
+                <div className="colors">
+                    {colorsArray.map((item, index) =>
+                        <div className={`color-block`}
+                             style={{backgroundColor: item.hex}}
+                             key={index}
+                             onClick={() => setColorSelectedByAndrius(item)}>
+                        </div>
                     )}
                 </div>
             </div>
