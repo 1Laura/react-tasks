@@ -1,7 +1,17 @@
 .container {
-    max-width: 800px;
-    justify-self: center;
     padding: 10px;
+}
+
+.box-move-container,
+.record-container {
+    display: flex;
+    /*border: 1px solid #676767;*/
+    /*border-radius: 5px;*/
+    margin: 20px;
+    padding: 10px;
+}
+
+.d-flex {
     display: flex;
 }
 
@@ -17,5 +27,36 @@
     height: 50px;
     width: 50px;
     margin: 10px;
-
 }
+
+/*record container style start*/
+button {
+    margin: 10px;
+    height: 30px;
+    width: 70px;
+}
+
+input {
+    height: 30px;
+}
+
+.record-block {
+    max-width: 50%;
+    width: 50%;
+    margin: 10px;
+    border: 1px solid #676767;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.record-render-text-time {
+    width: 80%;
+}
+
+.record-input {
+    align-items: center;
+}
+
+/*.record-block-edit {*/
+/*    display: none;*/
+/*}*/
