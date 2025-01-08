@@ -1,109 +1,77 @@
 import './App.css';
-import {useRef, useState} from "react";
+import {useState} from "react";
 
 function App() {
-    // record part start
-    const inputTextRef = useRef("");
-    const updateTextRef = useRef("");
-    const [recordValueArray, setRecordValueArray] = useState([]);
-    const [recordSelected, setRecordSelected] = useState(-1)
+    const decorationSlots = [{top: 0, left: 211, dec: ""}, {top: 155, left: 95, dec: ""}, {top: 240, left: 60, dec: ""}, {top: 355, left: 30, dec: ""}, {top: 475, left: 0, dec: ""}, {top: 155, left: 330, dec: ""}, {top: 240, left: 370, dec: ""}, {top: 355, left: 400, dec: ""}, {top: 475, left: 430, dec: ""}];
+    const lightSlots = [
+        {top: 60, left: 220},   // First row
+        {top: 90, left: 190}, {top: 90, left: 240},   // Second row
+        {top: 130, left: 200}, {top: 130, left: 280},  // Third row
+        {top: 170, left: 160}, {top: 170, left: 240}, {top: 170, left: 305},  // Fourth row
+        {top: 210, left: 150}, {top: 210, left: 220}, {top: 210, left: 300},  // Fifth row
+        {top: 250, left: 120}, {top: 250, left: 200}, {top: 250, left: 280}, {top: 250, left: 345},  // Sixth row
+        {top: 300, left: 180}, {top: 300, left: 260}, {top: 300, left: 330},   // Seventh row
+        {top: 350, left: 120}, {top: 350, left: 200}, {top: 350, left: 280}, {top: 350, left: 360},   // Eighth row
+        {top: 400, left: 140}, {top: 400, left: 220}, {top: 400, left: 300}, {top: 400, left: 380},  // Ninth row
+        {top: 450, left: 80}, {top: 450, left: 160}, {top: 450, left: 240}, {top: 450, left: 320}, {top: 450, left: 400},  // Tenth row
+        {top: 500, left: 100}, {top: 500, left: 200}, {top: 500, left: 280}, {top: 500, left: 360},  // Eleventh row
+        {top: 550, left: 120}, {top: 550, left: 240}, {top: 550, left: 360},  // Twelfth row
+    ];
 
-    function createRecord() {
-        const newRecord = {
-            value: inputTextRef.current.value,
-            time: new Date().toLocaleTimeString(),
-        }
-        const recordValueArrayCopy = [...recordValueArray];
-        recordValueArrayCopy.push(newRecord);
-        setRecordValueArray(recordValueArrayCopy)
-        inputTextRef.current.value = "";
+    const decorationsArray = ["🔔", "🎁", "🧩", "🍬", "⭐", "💟", "💝", "❄️", "🌟", "🍪", "🕯️"]
+
+    const [selectedDecorationSlot, setSelectedDecorationSlot] = useState([]);
+
+    const [selectedLightSlot, setSelectedLightSlot] = useState(null);
+
+
+    function choseDecorationSlot(index) {
+        setSelectedDecorationSlot(index);
+        console.log(selectedDecorationSlot);
     }
 
-    function updateRecord(index) {
-        const updateRecord = {
-            value: updateTextRef.current.value,
-            time: new Date().toLocaleTimeString(),
-        }
-        // atnaujinu irasa
-        const recordValueArrayCopy = [...recordValueArray];
-        // perduodu indexa iraso ir jo reiksme
-        recordValueArrayCopy[index] = updateRecord;
-        setRecordValueArray(recordValueArrayCopy);
-        updateTextRef.current.value = "";
+    function updateDecorationSlotOnTree(index) {
+        console.log(index);
     }
 
-    // move box part
-    const [array1, setArray1] = useState(["purple", "pink", "coral", "violet"]);
-    const [array2, setArray2] = useState([]);
-
-    function colorMoveToBox2(index) {
-        console.log(index)
-        let array1Copy = [...array1];
-        array1Copy = array1Copy.filter((item, i) => i !== index);
-        setArray1(array1Copy);
-
-        let array2Copy = [...array2, array1[index]];
-        setArray2(array2Copy);
-    }
-
-    function colorMoveToBox1(index) {
-        let array2Copy = [...array2];
-        array2Copy = array2Copy.filter((item, i) => i !== index);
-        setArray2(array2Copy);
-
-        let array1Copy = [...array1, array2[index]];
-        setArray1(array1Copy);
-    }
 
     return (
         <div className="container">
-            <div className="record-container">
-                <div className="record-block">
-                    {recordValueArray.map((record, index) =>
-                        <div className="record-render d-flex" key={index}>
-                            <div className="record-render-text-time">
-                                <p>{record.value}</p>
-                                <p>{record.time}</p>
-                            </div>
-                            <button onClick={() => setRecordSelected(index)}>Edit</button>
+            <div className="christmas-tree-container">
+                <div className="lights-block">
+                    <h3>Lights</h3>
+                    <div className="light-box" style={{backgroundColor: "yellow"}}></div>
+                    <div className="light-box" style={{backgroundColor: "red"}}></div>
+                    <div className="light-box" style={{backgroundColor: "orange"}}></div>
+                    <div className="light-box" style={{backgroundColor: "lightblue"}}></div>
+                </div>
+                <div className="christmas-tree-block">
+                    <img src="https://i.pinimg.com/736x/b7/5c/98/b75c98c86763fcfa48f1be8fac301587.jpg" alt=""/>
+
+                    {decorationSlots.map((slot, index) =>
+                        <div key={index}
+                             className="decoration-slot"
+                             style={{top: `${slot.top}px`, left: `${slot.left}px`}}
+                             onClick={() => choseDecorationSlot(index)}>
+                            {decorationsArray[selectedDecorationSlot]}
                         </div>
                     )}
-                    <div className="record-input d-flex">
-                        <input type="text"
-                               placeholder="Enter text"
-                               ref={inputTextRef}/>
-                        <button onClick={createRecord}>Create</button>
-                    </div>
-                </div>
 
-                {recordSelected >= 0 &&
-                    <div className="record-block record-block-edit">
-                        <p>{recordValueArray[recordSelected].value}</p>
-                        <input type="text" placeholder="Update text"
-                               ref={updateTextRef}/>
-                        <button onClick={() => updateRecord(recordSelected)}>Update</button>
-                    </div>
-                }
-            </div>
-
-            <hr/>
-
-            <div className="box-move-container">
-                <div className="box">
-                    {array1.map((color1, index1) =>
-                        <div key={index1}
-                             className="color"
-                             style={{backgroundColor: color1}}
-                             onClick={() => colorMoveToBox2(index1)}>
+                    {lightSlots.map((slot, index) =>
+                        <div key={index}
+                             className="light-slot"
+                             style={{top: `${slot.top}px`, left: `${slot.left}px`}}
+                             onClick={() => setSelectedLightSlot(index)}>
                         </div>
                     )}
                 </div>
-                <div className="box">
-                    {array2.map((color2, index2) =>
-                        <div key={index2}
-                             className="color"
-                             style={{backgroundColor: color2}}
-                             onClick={() => colorMoveToBox1(index2)}>
+                <div className="decoration-block">
+                    <h3>Decorations</h3>
+                    {decorationsArray.map((decoration, index) =>
+                        <div key={index}
+                             className="decoration-box"
+                             onClick={() => updateDecorationSlotOnTree(index)}>
+                            {decoration}
                         </div>
                     )}
                 </div>
