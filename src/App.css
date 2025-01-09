@@ -2,48 +2,24 @@
     padding: 10px;
 }
 
-.christmas-tree-container {
-    display: flex;
-    /*border: 1px solid #676767;*/
-    /*border-radius: 5px;*/
-    margin: 20px;
-    padding: 10px;
-    justify-content: space-evenly;
-}
+/*.elf-gifts-game {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
 
-.light-box {
-    height: 30px;
-    width: 30px;
-    border: 1px solid #676767;
-    margin: 5px;
-}
-
-.decoration-box {
-    font-size: 40px;
-    cursor: pointer;
-    margin: 3px;
-}
-
-.christmas-tree-block {
-    position: relative;
-}
-
-.decoration-slot {
-    height: 50px;
-    width: 50px;
-    border: 1px solid #676767;
-    border-radius: 50%;
-    position: absolute;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 40px;
-}
-
-.light-slot {
-    height: 10px;
-    width: 10px;
-    border: 1px solid #676767;
-    border-radius: 50%;
-    position: absolute;
-    background-color: transparent;
-}
+/*.kids-row-name {*/
+/*    margin: 10px;*/
+/*    padding: 10px;*/
+/*    border: 1px solid #535353;*/
+/*    border-radius: 5px;*/
+/*    width: 300px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*button {*/
+/*    margin: 10px;*/
+/*    padding: 10px;*/
+/*    border: 1px solid #535353;*/
+/*    border-radius: 5px;*/
+/*    background-color: #f0f0f0;*/
+/*    cursor: pointer;*/
+/*}*/
