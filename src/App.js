@@ -24,7 +24,17 @@ function App() {
         setLettersList([...lettersList, newLetterInfo]);
         inputSender.current.value = "";
         inputLetterContent.current.value = "";
+    }
 
+    function deleteFromLettersList(letterIndex) {
+
+        setLettersList(lettersList.filter((_, index) => index !== letterIndex));
+        if (selectedLetter === letterIndex) {
+            setSelectedLetter(-1);
+        } else if (selectedLetter > letterIndex) {
+            setSelectedLetter(selectedLetter - 1);
+        }
+        console.log("laisku listas", lettersList);
     }
 
 
@@ -41,7 +51,7 @@ function App() {
                 <div className="col-3 letters-list">
 
                     {lettersList.map((letter, index) =>
-                        <div className="letter-list flex-column" key={index} onClick={()=>setSelectedLetter(index)}>
+                        <div className="letter-list flex-column" key={index} onClick={() => setSelectedLetter(index)}>
                             <p>From: {letter.sender}</p>
                             <p>Time: {letter.time}</p>
                         </div>
@@ -53,7 +63,7 @@ function App() {
                         <div className="one-letter">
                             <p>From: {lettersList[selectedLetter].sender}</p>
                             <p>{lettersList[selectedLetter].letterContent}</p>
-                            <button>Mark as seen</button>
+                            <button onClick={() => deleteFromLettersList(selectedLetter)}>Mark as seen</button>
                         </div>
                     )}
                 </div>
