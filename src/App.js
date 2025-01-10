@@ -47,7 +47,9 @@ function App() {
                     <button onClick={addLetterInfoToLettersList}>Send</button>
 
                 </div>
+
                 <div className="col-1 border progress-bar"></div>
+
                 <div className="col-3 letters-list">
 
                     {lettersList.map((letter, index) =>
