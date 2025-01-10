@@ -1,25 +1,22 @@
-.container {
-    padding: 10px;
+.progress-bar {
+    height: 400px;
+    width: 30px;
+    background-color: #dddddd;
+    margin: 10px;
 }
 
-/*.elf-gifts-game {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
+.letters-list {
+    width: 155px;
+}
 
-/*.kids-row-name {*/
-/*    margin: 10px;*/
-/*    padding: 10px;*/
-/*    border: 1px solid #535353;*/
-/*    border-radius: 5px;*/
-/*    width: 300px;*/
-/*    cursor: pointer;*/
-/*}*/
-/*button {*/
-/*    margin: 10px;*/
-/*    padding: 10px;*/
-/*    border: 1px solid #535353;*/
-/*    border-radius: 5px;*/
-/*    background-color: #f0f0f0;*/
-/*    cursor: pointer;*/
-/*}*/
+.letter-list {
+    border: 1px solid #6a6a6a;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.one-letter {
+    /*display: none;*/
+}

@@ -1,97 +1,63 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
-// Santa's Elf Gift-Wrapping Game
+    const inputSender = useRef(null);
+    const inputLetterContent = useRef(null);
+    const [lettersList, setLettersList] = useState([]);
+    const [selectedLetter, setSelectedLetter] = useState(-1);
 
-    const childrenList = [
-        {name: "Alice", goodness_score: 85, gift: "🎁"},
-        {name: "Bob", goodness_score: 32, gift: "🎉"},
-        {name: "Charlie", goodness_score: 78, gift: "🍫"},
-        {name: "Diana", goodness_score: 47, gift: "🎨"},
-        {name: "Eve", goodness_score: 96, gift: "🎂"},
-        {name: "Frank", goodness_score: 52, gift: "🧸"},
-        {name: "Grace", goodness_score: 88, gift: "📚"},
-        {name: "Hank", goodness_score: 74, gift: "🧩"},
-        {name: "Ivy", goodness_score: 91, gift: "🌸"},
-        {name: "Jack", goodness_score: 13, gift: "⚽"},
-    ];
+    useEffect(() => {
+        console.log("listas po setinimo", lettersList);
+        // return () => {
+        //     console.log("I am being cleaned up");
+        // };
+    }, [lettersList]);
 
-    const GOODNESS_THRESHOLD = 50;
-
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [correctDecisions, setCorrectDecisions] = useState(0);
-    const [wrappedGifts, setWrappedGifts] = useState(0);
-    const [givenCoal, setGivenCoal] = useState(0);
-
-    const currentChild = childrenList[currentIndex];
-
-    const handleDecision = (decision) => {
-        const isGood = currentChild.goodness_score >= GOODNESS_THRESHOLD;
-        const isCorrectDecision =
-            (decision === "gift" && isGood) || (decision === "coal" && !isGood);
-
-        if (isCorrectDecision) {
-            setCorrectDecisions((prev) => prev + 1);
+    function addLetterInfoToLettersList() {
+        const newLetterInfo = {
+            sender: inputSender.current.value,
+            letterContent: inputLetterContent.current.value,
+            time: new Date().toLocaleTimeString(),
         }
+        setLettersList([...lettersList, newLetterInfo]);
+        inputSender.current.value = "";
+        inputLetterContent.current.value = "";
 
-        if (decision === "gift") {
-            setWrappedGifts((prev) => prev + 1);
-        } else {
-            setGivenCoal((prev) => prev + 1);
-        }
+    }
 
-        if (currentIndex < childrenList.length - 1) {
-            setCurrentIndex((prev) => prev + 1);
-        } else {
-            alert(
-                `Game Over!\nGifts Delivered: ${wrappedGifts}\nCoal Given: ${givenCoal}\nAccuracy: ${(
-                    (correctDecisions / childrenList.length) *
-                    100
-                ).toFixed(2)}%`
-            );
-        }
-    };
 
     return (
-        <div style={{fontFamily: "Arial, sans-serif", textAlign: "center", padding: "20px"}}>
-            <h1>🎄 Santa's Elf Gift-Wrapping Game 🎄</h1>
-            {currentIndex < childrenList.length ? (
-                <div>
-                    <h2>
-                        Child: {currentChild.name}
-                    </h2>
-                    <p>
-                        Goodness Score: <strong>{currentChild.goodness_score}</strong>
-                    </p>
-                    <p>
-                        Gift Wish: <span>{currentChild.gift}</span>
-                    </p>
-                    <p>What should we do?</p>
-                    <button
-                        style={{marginRight: "10px", padding: "10px", fontSize: "16px"}}
-                        onClick={() => handleDecision("gift")}
-                    >
-                        🎁 Wrap the Gift
-                    </button>
-                    <button
-                        style={{padding: "10px", fontSize: "16px"}}
-                        onClick={() => handleDecision("coal")}
-                    >
-                        🪨 Give Coal
-                    </button>
+        <div className="container">
+            <div className="row">
+                <div className="col-4 write-letter">
+                    <input type="text" placeholder="Sender" ref={inputSender}/>
+                    <input type="text" placeholder="Enter letter" ref={inputLetterContent}/><br/>
+                    <button onClick={addLetterInfoToLettersList}>Send</button>
+
                 </div>
-            ) : (
-                <div>
-                    <h2>Great Job, Elf!</h2>
-                    <p>Gifts Delivered: {wrappedGifts} 🎁</p>
-                    <p>Coal Given: {givenCoal} 🪨</p>
-                    <p>
-                        Accuracy: {((correctDecisions / childrenList.length) * 100).toFixed(2)}%
-                    </p>
+                <div className="col-1 border progress-bar"></div>
+                <div className="col-3 letters-list">
+
+                    {lettersList.map((letter, index) =>
+                        <div className="letter-list flex-column" key={index} onClick={()=>setSelectedLetter(index)}>
+                            <p>From: {letter.sender}</p>
+                            <p>Time: {letter.time}</p>
+                        </div>
+                    )}
+
                 </div>
-            )}
+                <div className="col-4">
+                    {selectedLetter >= 0 && (
+                        <div className="one-letter">
+                            <p>From: {lettersList[selectedLetter].sender}</p>
+                            <p>{lettersList[selectedLetter].letterContent}</p>
+                            <button>Mark as seen</button>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
