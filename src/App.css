@@ -1,23 +1,6 @@
-.progress-bar {
-    height: 400px;
-    width: 30px;
-    background-color: #dddddd;
-    margin: 10px;
+.color-box {
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    color: aqua;
 }
-
-.letters-list {
-    width: 155px;
-}
-
-.letter-list {
-    border: 1px solid #6a6a6a;
-    border-radius: 5px;
-    padding: 3px;
-    margin-bottom: 2px;
-    cursor: pointer;
-}
-
-img {
-    height: 50px;
-}
-
