@@ -62,11 +62,11 @@ function App() {
         <div className="container">
             <div className="p-2">Toolbar</div>
             <div className="d-flex flex-row p-2">
-                <User color={colors[0].color} colorName={colors[0].color}/>
-                <User color={colors[1].color} colorName={colors[1].color}/>
-                <User color={colors[2].color} colorName={colors[2].color}/>
-                <User color={colors[3].color} colorName={colors[3].color}/>
-                <User color={colors[4].color} colorName={colors[4].color}/>
+
+                {colors.map((item, index) =>
+                    <User key={index} color={item.color} colorName={item.color}/>
+                )}
+
             </div>
         </div>
     );
