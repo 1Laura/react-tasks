@@ -1,12 +1,13 @@
 const User = (props) => {
     return (
 
-        <div className="render" style={{backgroundColor: props.color}}>
-            <p>{props.colorName}</p>
-            <div className="families-container">
-                {props.colorFamilies.map(familiesColor =>
-                    <div className="colors-block-families" style={{backgroundColor: familiesColor}}></div>)}
-            </div>
+        <div className="render">
+            <img src={props.photo} alt=""/>
+            <p>{props.email}</p>
+            <p>{props.username}</p>
+            <p>{props.age}</p>
+            <p>{props.country}</p>
+            <p>{props.city}</p>
         </div>
 
     );
