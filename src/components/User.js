@@ -1,13 +1,13 @@
-const User = (props) => {
+const User = ({photo, email, username, age, country, city}) => {
     return (
 
         <div className="render">
-            <img src={props.photo} alt=""/>
-            <p>{props.email}</p>
-            <p>{props.username}</p>
-            <p>{props.age}</p>
-            <p>{props.country}</p>
-            <p>{props.city}</p>
+            <img src={photo} alt=""/>
+            <p>{email}</p>
+            <p>{username}</p>
+            <p>{age}</p>
+            <p>{country}</p>
+            <p>{city}</p>
         </div>
 
     );
