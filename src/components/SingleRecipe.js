@@ -1,11 +1,12 @@
 import {useState} from "react";
 
 const SingleRecipe = ({item}) => {
-    const [trigger, setTrigger] = useState(false);
+    const [color, setColor] = useState("transparent");
 
     return (
-        <div className="render" key={item.id} onClick={() => setTrigger(!trigger)}
-             style={{backgroundColor: trigger && "green"}}
+        <div className="render" key={item.id}
+             onClick={() => setColor("lightGreen")}
+             style={{backgroundColor: color}}
         >
             <img src={item.image} alt=""/>
             <h4>{item.name} / {item.id}</h4>
