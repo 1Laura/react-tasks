@@ -1,16 +1,10 @@
 
-.user-container {
-    border: 1px solid #757575;
-    border-radius: 5px;
+.container {
+    /*border: 1px solid #757575;*/
+    /*border-radius: 5px;*/
     padding: 20px;
     margin-bottom: 30px;
     display: flex;
-    flex-wrap: wrap;
-}
-
-.colors {
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -25,21 +19,6 @@
     min-height: fit-content;
 }
 
-.color-block {
-    height: 46px;
-    width: 46px;
-    margin: 3px;
-}
-
-.families-container {
-    /*display:flex;*/
-    justify-content: center;
-    height: 30px;
-}
-
-.colors-block-families {
-    border: 1px solid #757575;
-    padding: 1px;
-    height: 20px;
-    margin: 1px;
+img {
+    width: 100px;
 }
