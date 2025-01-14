@@ -1,7 +1,12 @@
-const SingleRecipe = ({item}) => {
-    return (
+import {useState} from "react";
 
-        <div className="render" key={item.id}>
+const SingleRecipe = ({item}) => {
+    const [trigger, setTrigger] = useState(false);
+
+    return (
+        <div className="render" key={item.id} onClick={() => setTrigger(!trigger)}
+             style={{backgroundColor: trigger && "green"}}
+        >
             <img src={item.image} alt=""/>
             <h4>{item.name} / {item.id}</h4>
             <h5>Cuisine: {item.cuisine}</h5>
