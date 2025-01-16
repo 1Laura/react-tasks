@@ -13,7 +13,7 @@ function App() {
             .then(data => {
                 setPosts(data)
             })
-    })
+    },[])
 
     return (
         <div className="container">
