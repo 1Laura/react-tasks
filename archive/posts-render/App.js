@@ -5,7 +5,7 @@ import SinglePost from "./components/SinglePost";
 
 function App() {
     const [posts, setPosts] = useState([])
-
+    const [title, setTitle] = useState(""); // State for the title
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/posts")
@@ -15,13 +15,13 @@ function App() {
             })
     }, [])
 
-    function updateTitle() {
-        console.log("asdasd")
+    function updateTitle(data) {
+        setTitle(data);
     }
 
     return (
         <div className="container">
-            <h2>This is page title</h2>
+            <h2>{title}</h2>
             <div className="d-flex flex-wrap gap-1">
                 {posts.map((post, index) =>
                     <SinglePost key={index} postInfo={post} update={updateTitle}/>
