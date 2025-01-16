@@ -1,22 +1,30 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {useEffect, useState} from "react";
-import SingleItem from "./components/SingleItem";
+import {use, useRef, useState} from "react";
+import SingleUser from "./components/SingleUser";
 
 function App() {
-    const [items, setItems] = useState([]);
+    const [img, setImg] = useState("");
+    const [name, setName] = useState("");
+    const [users, setUsers] = useState([]);
 
+    const newUser = {
+        image: img,
+        username: name
+    }
 
     return (
         <div className="container">
-            <button onClick={()=>setItems([...items, ""])}>Add items</button>
+            <input type="text" placeholder="enter image url" value={img} onChange={(event) => setImg(event.target.value)}/>
+            <input type="text" placeholder="enter username" value={name} onChange={(event) => setName(event.target.value)}/>
+            <button onClick={() => setUsers([...users, newUser])}>Add user</button>
+
+
             <div className="d-flex mt-2 flex-wrap gap-1">
-                {items.map((item, index)=>
-                <SingleItem key={index} />
+                {users.map((user, index) =>
+                    <SingleUser key={index} userInfo={user}/>
                 )}
-
             </div>
-
         </div>
     );
 }
