@@ -1,30 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {use, useRef, useState} from "react";
-import SingleUser from "./components/SingleUser";
+import { useEffect, useState} from "react";
+import SinglePost from "./components/SinglePost";
 
 function App() {
-    const [img, setImg] = useState("");
-    const [name, setName] = useState("");
-    const [users, setUsers] = useState([]);
+    const [posts, setPosts] = useState([])
 
-    const newUser = {
-        image: img,
-        username: name
-    }
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(data => {
+                setPosts(data)
+            })
+    })
 
     return (
         <div className="container">
-            <input type="text" placeholder="enter image url" value={img} onChange={(event) => setImg(event.target.value)}/>
-            <input type="text" placeholder="enter username" value={name} onChange={(event) => setName(event.target.value)}/>
-            <button onClick={() => setUsers([...users, newUser])}>Add user</button>
-
-
-            <div className="d-flex mt-2 flex-wrap gap-1">
-                {users.map((user, index) =>
-                    <SingleUser key={index} userInfo={user}/>
+            <div className="d-flex flex-wrap gap-1">
+                {posts.map((post, index) =>
+                    <SinglePost key={index} postInfo={post}/>
                 )}
             </div>
+
+
         </div>
     );
 }
