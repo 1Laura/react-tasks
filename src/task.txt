@@ -1,0 +1,15 @@
+https://jsonplaceholder.typicode.com/
+JSONPlaceholder - Free Fake REST API
+
+create pages:
+posts
+comments
+photos
+users
+
+each page should fetch data from API
+each item from data array should be appended as component (map individual components)
+
+make it possible to go to each page by links
+
+ 
