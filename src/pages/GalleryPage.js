@@ -9,8 +9,12 @@ const GalleryPage = () => {
         fetch("https://jsonplaceholder.typicode.com/photos")
             .then(response => response.json())
             .then(data => {
-                setPhotos(data);
-                console.log(data)
+
+                let result = [];
+                for (let i = 0; i < 100; i++) {
+                    result.push(data[i])
+                }
+                setPhotos(result);
             })
     }, [])
 

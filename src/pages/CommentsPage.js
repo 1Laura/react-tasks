@@ -10,7 +10,7 @@ const CommentsPage = () => {
             .then(response => response.json())
             .then(data => {
                 setComments(data);
-                console.log(comments)
+                console.log(data)
             })
     }, []);
 

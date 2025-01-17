@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import IndexPage from "./pages/IndexPage";
 import GalleryPage from "./pages/GalleryPage";
 import Toolbar from "./components/Toolbar";
 import UsersPage from "./pages/UsersPage";
@@ -15,17 +14,16 @@ function App() {
     return (
         <div className="container-fluid">
             <BrowserRouter>
-
                 <Toolbar/>
-
-                <Routes>
-                    <Route path="/" element={<IndexPage/>}></Route>
-                    <Route path="/gallery" element={<GalleryPage/>}></Route>
-                    <Route path="/users" element={<UsersPage/>}></Route>
-                    <Route path="/posts" element={<PostsPage/>}></Route>
-                    <Route path="/comments" element={<CommentsPage/>}></Route>
-                </Routes>
-
+                <div>
+                    <Routes>
+                        <Route path="/" element={<PostsPage/>}></Route>
+                        <Route path="/gallery" element={<GalleryPage/>}></Route>
+                        <Route path="/users" element={<UsersPage/>}></Route>
+                        <Route path="/posts" element={<PostsPage/>}></Route>
+                        <Route path="/comments" element={<CommentsPage/>}></Route>
+                    </Routes>
+                </div>
             </BrowserRouter>
         </div>
     );
