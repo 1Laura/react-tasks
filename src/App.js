@@ -1,34 +1,28 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {useEffect, useState} from "react";
-import SinglePost from "./components/SinglePost";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import IndexPage from "./pages/IndexPage";
+import GalleryPage from "./pages/GalleryPage";
+import Toolbar from "./components/Toolbar";
+import ProfilePage from "./pages/ProfilePage";
+
 
 function App() {
-    const [posts, setPosts] = useState([])
-    const [title, setTitle] = useState(""); // State for the title
 
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts")
-            .then(response => response.json())
-            .then(data => {
-                setPosts(data)
-            })
-    }, [])
-
-    function updateTitle(data) {
-        setTitle(data);
-    }
 
     return (
-        <div className="container">
-            <h2>{title}</h2>
-            <div className="d-flex flex-wrap gap-1">
-                {posts.map((post, index) =>
-                    <SinglePost key={index} postInfo={post} update={updateTitle}/>
-                )}
-            </div>
+        <div className="container-fluid">
+            <BrowserRouter>
 
+                <Toolbar/>
 
+                <Routes>
+                    <Route path="/" element={<IndexPage/>}></Route>
+                    <Route path="/gallery" element={<GalleryPage/>}></Route>
+                    <Route path="/profile" element={<ProfilePage/>}></Route>
+                </Routes>
+
+            </BrowserRouter>
         </div>
     );
 }
