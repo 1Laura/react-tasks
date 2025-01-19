@@ -16,11 +16,16 @@
 }
 
 img {
-    width: 200px;
+    width: 281px;
 }
-.card{
+
+.card {
     max-height: fit-content;
     width: 300px;
     border: 1px solid #6a6a6a;
     border-radius: 5px;
+}
+
+.user-name {
+    cursor: pointer;
 }
