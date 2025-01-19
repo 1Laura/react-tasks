@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import SinglePost from "../components/SinglePost";
 
 
-const UserPage = () => {
+const UserPostsPage = () => {
     const params = useParams();
     const [userPosts, setUserPosts] = useState([]);
 
@@ -11,6 +11,7 @@ const UserPage = () => {
         fetch("http://167.99.138.67:1111/getuserposts/" + params.username)
             .then(response => response.json())
             .then(data => {
+                // console.log(data.data)
                 setUserPosts(data.data)
             })
     }, [])
@@ -26,4 +27,4 @@ const UserPage = () => {
     );
 };
 
-export default UserPage;
+export default UserPostsPage;
