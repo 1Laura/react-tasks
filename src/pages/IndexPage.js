@@ -10,7 +10,7 @@ const IndexPage = () => {
             .then(response => response.json())
             .then(data => {
                 setAllPosts(data.data);
-                console.log(data.data)
+                // console.log(data.data)
             })
     }, []);
 
