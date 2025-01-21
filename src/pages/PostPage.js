@@ -3,14 +3,14 @@ import SinglePost from "../components/SinglePost";
 import {useParams} from "react-router-dom";
 
 const PostPage = () => {
-    const params = useParams();
+    const {username, postId} = useParams();
     const [userPost, setUserPost] = useState([]);
 
     useEffect(() => {
-        fetch("http://167.99.138.67:1111/getsinglepost/" + params.username + "/" + params.postId)
+        fetch(`http://167.99.138.67:1111/getsinglepost/${username}/${postId}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setUserPost(data.data)
             })
     }, [])
@@ -18,7 +18,7 @@ const PostPage = () => {
     return (
         <div className="container d-flex flex-wrap gap-2">
             {/*{userPost.map((post, index) =>*/}
-                <SinglePost  postInfo={userPost}/>
+            <SinglePost postInfo={userPost}/>
             {/*)}*/}
         </div>
     );

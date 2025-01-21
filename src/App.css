@@ -29,3 +29,7 @@ img {
 .user-name {
     cursor: pointer;
 }
+
+input {
+    margin: 5px;
+}

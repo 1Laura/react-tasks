@@ -1,15 +1,50 @@
-https://jsonplaceholder.typicode.com/
-JSONPlaceholder - Free Fake REST API
+Register
+http://167.99.138.67:1111/createaccount
 
-create pages:
-posts
-comments
-photos
-users
+lazy lama - belenkas
 
-each page should fetch data from API
-each item from data array should be appended as component (map individual components)
+POST body with keys:
+name, passwordOne, passwordTwo
 
-make it possible to go to each page by links
+-------------------
 
- 
+Login
+http://167.99.138.67:1111/login
+
+POST body with keys:
+name, password
+
+--------------------
+
+on user loggin, when you get secret key, save that secret key to app.js state
+
+in toolbar if user logged in hide "login" and "register" links and append "Upload"
+
+in upload page create form to upload new post according to upload API
+
+UPLOAD POST API:
+
+http://167.99.138.67:1111/createpost
+
+POST BODY WITH KEYS:
+secretKey, title, image, description
+
+------------------------------------
+
+MAKE DELETE POST LOGIC
+
+http://167.99.138.67:1111/deletepost
+
+POST WITH BODY KEYS:
+secretKey, id
+
+
+Post you want to delete have to be owned by user which is logged in
+
+-------------------------------------
+
+http://167.99.138.67:1111/updatepost
+
+
+POST WITH BODY KEYS:
+secretKey, title, image, description, id

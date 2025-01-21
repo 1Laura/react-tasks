@@ -4,11 +4,11 @@ import SinglePost from "../components/SinglePost";
 
 
 const UserPostsPage = () => {
-    const params = useParams();
+    const {username} = useParams();
     const [userPosts, setUserPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://167.99.138.67:1111/getuserposts/" + params.username)
+        fetch("http://167.99.138.67:1111/getuserposts/" + username)
             .then(response => response.json())
             .then(data => {
                 // console.log(data.data)
