@@ -29,6 +29,8 @@ http://167.99.138.67:1111/createpost
 POST BODY WITH KEYS:
 secretKey, title, image, description
 
+https://www.trekkingguide.de/bilder/alpen-oesterreich/kaisertour-08-2021/index_files/vlb_images1/kaisertour_210811_7537.jpg
+
 ------------------------------------
 
 MAKE DELETE POST LOGIC

@@ -1,18 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useState} from "react";
 import Toolbar from "./components/Toolbar";
 import UserPostsPage from "./pages/UserPostsPage";
 import IndexPage from "./pages/IndexPage";
 import PostPage from "./pages/PostPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import {use, useState} from "react";
 import PostCreatePage from "./pages/PostCreatePage";
 
 function App() {
-
     const [secret, setSecret] = useState(null);
+    const [username, setUsername] = useState(null);
+
+    function setLogin(secretKey, username) {
+        setSecret(secretKey);
+        setUsername(username)
+    }
 
     return (
         <div className="container-fluid">

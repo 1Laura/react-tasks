@@ -5,6 +5,7 @@ const PostCreatePage = ({secret}) => {
     const titleRef = useRef();
     const imageRef = useRef();
     const descriptionRef = useRef();
+    const navigate = useNavigate();
 
     const [error, setError] = useState(null);
 
@@ -32,6 +33,7 @@ const PostCreatePage = ({secret}) => {
                 console.log(data)
                 if (data.success) {
                     setError(null);
+                    navigate("/");
                 } else {
                     setError(data.message)
                 }
