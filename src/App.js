@@ -27,7 +27,7 @@ function App() {
                         <Route path="/user/:username/:postId" element={<PostPage/>}></Route>
                         <Route path="/login" element={<LoginPage setSecret={setSecret}/>}></Route>
                         <Route path="/register" element={<RegisterPage/>}></Route>
-                        <Route path="/createpost" element={<PostCreatePage/>}></Route>
+                        <Route path="/createpost" element={<PostCreatePage secret={secret}/>}></Route>
                     </Routes>
                 </div>
 
