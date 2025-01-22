@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import SinglePost from "../components/SinglePost";
 import {useParams} from "react-router-dom";
 
-const PostPage = () => {
+const PostPage = ({username: myName, secret}) => {
     const {username, postId} = useParams();
     const [userPost, setUserPost] = useState([]);
 
@@ -17,9 +17,9 @@ const PostPage = () => {
 
     return (
         <div className="container d-flex flex-wrap gap-2">
-            {/*{userPost.map((post, index) =>*/}
-            <SinglePost postInfo={userPost}/>
-            {/*)}*/}
+            {userPost &&
+                <SinglePost postInfo={userPost} username={myName} secret={secret}/>
+            }
         </div>
     );
 };

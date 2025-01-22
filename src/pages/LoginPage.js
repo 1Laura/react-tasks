@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
-const LoginPage = ({setSecret}) => {
+const LoginPage = ({setLogin}) => {
     const usernameRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const LoginPage = ({setSecret}) => {
                 console.log(data)
                 if (data.success) {
                     setError(null);
-                    setSecret(data.secretKey);
+                    setLogin(data.secretKey, userLogin.name);
                     navigate("/createpost");
                 } else {
                     setError(data.message)

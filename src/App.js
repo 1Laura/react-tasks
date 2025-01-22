@@ -27,11 +27,14 @@ function App() {
 
                 <div>
                     <Routes>
-                        <Route path="/" element={<IndexPage/>}></Route>
-                        <Route path="/user/:username" element={<UserPostsPage/>}></Route>//username= params, naudoja ir logina pavadinima is cia
-                        <Route path="/user/:username/:postId" element={<PostPage/>}></Route>
-                        <Route path="/login" element={<LoginPage setSecret={setSecret}/>}></Route>
+                        <Route path="/" element={<IndexPage username={username} secret={secret}/>}></Route>
+
+                        <Route path="/user/:username" element={<UserPostsPage username={username} secret={secret}/>} ></Route>//username= params, naudoja ir logina pavadinima is cia
+                        <Route path="/user/:username/:postId" element={<PostPage username={username} secret={secret}/>}></Route>
+
+                        <Route path="/login" element={<LoginPage setLogin={setLogin}/>}></Route>
                         <Route path="/register" element={<RegisterPage/>}></Route>
+
                         <Route path="/createpost" element={<PostCreatePage secret={secret}/>}></Route>
                     </Routes>
                 </div>

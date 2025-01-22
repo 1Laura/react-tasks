@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import SinglePost from "../components/SinglePost";
 
-const IndexPage = () => {
+const IndexPage = ({username, secret}) => {
 
     const [allPosts, setAllPosts] = useState([]);
 
@@ -10,17 +10,19 @@ const IndexPage = () => {
             .then(response => response.json())
             .then(data => {
                 setAllPosts(data.data);
-                // console.log(data.data)
             })
     }, []);
+
+    function removePostFromAllPostsArray(id) {
+        let allPostsCopy = [...allPosts];
+        allPostsCopy = allPostsCopy.filter(post => post.id !== id);
+        setAllPosts(allPostsCopy);
+    }
 
 
     return (
         <div className="container d-flex flex-wrap gap-2">
-            {allPosts.map((post, index)=>
-                <SinglePost key={index} postInfo={post}/>
-            )}
-
+            {allPosts.map(post => <SinglePost key={post.id} postInfo={post} username={username} secret={secret} removePost={removePostFromAllPostsArray}/>)}
         </div>
     );
 };
