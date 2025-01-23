@@ -19,10 +19,23 @@ const IndexPage = ({username, secret}) => {
         setAllPosts(allPostsCopy);
     }
 
+    function updatePostFromAllPostsArray(postItem) {
+        let allPostsCopy = [...allPosts];
+        let postIndex = allPostsCopy.findIndex(post => post.id === postItem.id);
+        allPostsCopy[postIndex] = postItem;
+        setAllPosts(allPostsCopy);
+    }
+
 
     return (
         <div className="container d-flex flex-wrap gap-2">
-            {allPosts.map(post => <SinglePost key={post.id} postInfo={post} username={username} secret={secret} removePost={removePostFromAllPostsArray}/>)}
+            {allPosts.map(post =>
+                <SinglePost key={post.id}
+                            postInfo={post}
+                            username={username}
+                            secret={secret}
+                            removePost={removePostFromAllPostsArray}
+                            updatePost={updatePostFromAllPostsArray}/>)}
         </div>
     );
 };

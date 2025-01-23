@@ -44,9 +44,9 @@ const PostCreatePage = ({secret}) => {
         <div>
             <input type="text" placeholder="Enter title" ref={titleRef}/>
             <input type="text" placeholder="Enter image url" ref={imageRef}/>
-            <input type="text" placeholder="Enter description" ref={descriptionRef}/>
+            <textarea placeholder="Enter description" ref={descriptionRef}/>
+            {error && <h6>{error}</h6>}
             <button onClick={createPost}>Create post</button>
-
         </div>
     );
 };
