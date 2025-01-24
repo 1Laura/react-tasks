@@ -3,15 +3,15 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
 import React, {useEffect, useRef, useState} from "react";
 
-const SinglePost = () => {
-       return (
-        <div className="card p-2" >
-            <img src={postInfo.image} alt=""/>
-            <Link to={`/user/${postInfo.username}/${postInfo.id}/`}><h5>{postInfo.title}</h5></Link>
-            <p>{time}</p>
-            <p>{postInfo.description}</p>
-            <Link to={`/user/${postInfo.username}`}>{postInfo.username}</Link>
-
+const SinglePost = ({userInfo}) => {
+    return (
+        <div className="card flex-wrap p-2">
+            <Link to={`/user/${userInfo.name}/${userInfo.id}/`}><h5>{userInfo.name}</h5></Link>
+            <p><strong>Email:</strong> {userInfo.email}</p>
+            <p><strong>Phone:</strong> {userInfo.phone}</p>
+            <p><strong>City:</strong> {userInfo.address.city}</p>
+            <p><strong>WEB:</strong> {userInfo.website}</p>
+            <p><strong>Company:</strong> {userInfo.company.name}</p>
         </div>
     );
 };

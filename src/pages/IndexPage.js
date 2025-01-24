@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import SinglePost from "../components/SinglePost";
 
-const IndexPage = ({username, secret}) => {
+const IndexPage = () => {
 
     const [allUsers, setAllUsers] = useState([]);
 
@@ -17,7 +17,9 @@ const IndexPage = ({username, secret}) => {
 
     return (
         <div className="container d-flex flex-wrap gap-2">
-            <SinglePost/>
+            {allUsers.map(user =>
+                <SinglePost userInfo={user}/>
+            )}
         </div>
     );
 };
