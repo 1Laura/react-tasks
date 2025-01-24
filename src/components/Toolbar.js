@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const Toolbar = ({secret}) => {
+const Toolbar = () => {
     return (
         <div>
             <Link to="/" className="p-2">Home</Link>

@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Toolbar from "./components/Toolbar";
-import IndexPage from "./pages/IndexPage";
+import UsersPage from "./pages/UsersPage";
+import SingleUserPage from "./pages/SingleUserPage";
 
 function App() {
 
@@ -15,12 +16,8 @@ function App() {
 
                 <div>
                     <Routes>
-                        <Route path="/" element={<IndexPage/>}></Route>
-
-                        {/*<Route*/}
-                        {/*    path="/user/:username"*/}
-                        {/*    element={<UserPostsPage username={username} secret={secret}/>}>*/}
-                        {/*</Route>//username= params, naudoja ir logina pavadinima is cia*/}
+                        <Route path="/" element={<UsersPage/>}></Route>
+                        <Route path="/user/:id" element={<SingleUserPage/>}></Route>
 
                     </Routes>
                 </div>
