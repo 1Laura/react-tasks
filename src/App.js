@@ -4,6 +4,10 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Toolbar from "./components/Toolbar";
 import UsersPage from "./pages/UsersPage";
 import SingleUserPage from "./pages/SingleUserPage";
+import UserPostsPage from "./pages/UserPostsPage";
+import UserAlbumsPage from "./pages/UserAlbumsPage";
+import UserTodosPage from "./pages/UserTodosPage";
+import SinglePostPage from "./pages/SinglePostPage";
 
 function App() {
 
@@ -18,7 +22,10 @@ function App() {
                     <Routes>
                         <Route path="/" element={<UsersPage/>}></Route>
                         <Route path="/user/:id" element={<SingleUserPage/>}></Route>
-
+                        <Route path="/posts/:id" element={<UserPostsPage/>}></Route>
+                        <Route path="/post/:id" element={<SinglePostPage/>}></Route>
+                        <Route path="/albums/:id" element={<UserAlbumsPage/>}></Route>
+                        <Route path="/todos/:id" element={<UserTodosPage/>}></Route>
                     </Routes>
                 </div>
 
