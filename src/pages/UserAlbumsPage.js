@@ -17,7 +17,7 @@ const UserAlbumsPage = ({userAlbumsInfo}) => {
     }, []);
 
     return (
-        <div>
+        <div className="container d-flex flex-wrap gap-2">
             {albums.map(album =>
                 <SingleAlbums key={album.id} userAlbumsInfo={album}/>
             )}

@@ -18,7 +18,7 @@ const UserTodosPage = () => {
 
 
     return (
-        <div>
+        <div className="container d-flex flex-wrap gap-2">
             {userAllTodos.map(todo =>
                 <SingleTodo key={todo.id} userTodosInfo={todo}/>
             )}
