@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 const SingleUserPage = () => {
 
     const {id} = useParams();
-
     const [user, setUser] = useState(null);
 
     useEffect(() => {
