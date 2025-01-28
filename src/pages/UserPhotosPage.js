@@ -18,7 +18,7 @@ const UserPhotosPage = () => {
     return (
         <div className="container flex-wrap m-2 p-2">
             {userPhotos.map(userPhoto =>
-                <img key={userPhoto.id} src={userPhoto.url} alt=""/>
+                <img className="m-2 p-2" key={userPhoto.id} src="https://www.zooplus.de/magazin/wp-content/uploads/2017/03/fotolia_25521417.jpg" alt=""/>
             )}
         </div>
     );
