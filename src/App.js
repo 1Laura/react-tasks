@@ -8,6 +8,7 @@ import UserPostsPage from "./pages/UserPostsPage";
 import UserAlbumsPage from "./pages/UserAlbumsPage";
 import UserTodosPage from "./pages/UserTodosPage";
 import SinglePostPage from "./pages/SinglePostPage";
+import UserPhotosPage from "./pages/UserPhotosPage";
 
 function App() {
 
@@ -21,11 +22,12 @@ function App() {
                 <div>
                     <Routes>
                         <Route path="/" element={<UsersPage/>}></Route>
-                        <Route path="/user/:id" element={<SingleUserPage/>}></Route>
-                        <Route path="/posts/:id" element={<UserPostsPage/>}></Route>
-                        <Route path="/post/:id" element={<SinglePostPage/>}></Route>
-                        <Route path="/albums/:id" element={<UserAlbumsPage/>}></Route>
-                        <Route path="/todos/:id" element={<UserTodosPage/>}></Route>
+                        <Route path="/user/:userId" element={<SingleUserPage/>}></Route>
+                        <Route path="/posts/:userId" element={<UserPostsPage/>}></Route>
+                        <Route path="/post/:postId" element={<SinglePostPage/>}></Route>
+                        <Route path="/albums/:userId" element={<UserAlbumsPage/>}></Route>
+                        <Route path="/photos/:albumId" element={<UserPhotosPage/>}></Route>
+                        <Route path="/todos/:userId" element={<UserTodosPage/>}></Route>
                     </Routes>
                 </div>
 

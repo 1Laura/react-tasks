@@ -5,11 +5,11 @@ import SingleTodo from "../components/SingleTodo";
 
 
 const UserTodosPage = () => {
-    const {id} = useParams();
+    const {userId} = useParams();
     const [userAllTodos, setUserAllTodos] = useState([]);
 
     useEffect(() => {
-        http("https://jsonplaceholder.typicode.com/todos?userId=" + id)
+        http("https://jsonplaceholder.typicode.com/todos?userId=" + userId)
             .then(data => {
                 console.log(data)
                 setUserAllTodos(data)

@@ -4,12 +4,12 @@ import http from "../plugins/https";
 import SingleAlbums from "../components/SingleAlbums";
 
 const UserAlbumsPage = ({userAlbumsInfo}) => {
-    const {id} = useParams();
+    const {userId} = useParams();
     const [albums, setAlbums] = useState([]);
 
     useEffect(() => {
 
-        http("https://jsonplaceholder.typicode.com/albums?userId=" + id)
+        http("https://jsonplaceholder.typicode.com/albums?userId=" + userId)
             .then(data => {
                 console.log(data)
                 setAlbums(data)

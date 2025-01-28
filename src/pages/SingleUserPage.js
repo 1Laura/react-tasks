@@ -6,12 +6,12 @@ import Button from "react-bootstrap/Button";
 
 const SingleUserPage = () => {
 
-    const {id} = useParams();
+    const {userId} = useParams();
     const [user, setUser] = useState(null);
 
     useEffect(() => {
 
-        http("https://jsonplaceholder.typicode.com/users/" + id)
+        http("https://jsonplaceholder.typicode.com/users/" + userId)
             .then(data => {
                 console.log(data)
                 setUser(data)
@@ -26,7 +26,6 @@ const SingleUserPage = () => {
                         <SingleUser userInfo={user}/>
                     </div>
                     <div className="col-4">
-
                         <Link to={`/posts/${user.id}`}><Button className="user-posts m-2 w-50">User posts</Button></Link>
                         <Link to={`/albums/${user.id}`}><Button className="user-albums m-2 w-50">user albums</Button></Link>
                         <Link to={`/todos/${user.id}`}><Button className="user-todos m-2 w-50">user-todos</Button></Link>

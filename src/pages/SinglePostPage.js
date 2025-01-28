@@ -4,11 +4,11 @@ import http from "../plugins/https";
 import SinglePost from "../components/SinglePost";
 
 const SinglePostPage = () => {
-    const {id} = useParams();
+    const {postId} = useParams();
     const [userPost, setUserPost] = useState(null);
 
     useEffect(() => {
-        http("https://jsonplaceholder.typicode.com/posts/" + id)
+        http("https://jsonplaceholder.typicode.com/posts/" + postId)
             .then(data => {
                 console.log(data)
                 setUserPost(data)

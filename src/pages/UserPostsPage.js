@@ -4,11 +4,11 @@ import {useParams} from "react-router-dom";
 import SinglePost from "../components/SinglePost";
 
 const UserPostsPage = () => {
-    const {id} = useParams();
+    const {userId} = useParams();
     const [userAllPosts, setUserAllPosts] = useState([]);
 
     useEffect(() => {
-        http("https://jsonplaceholder.typicode.com/posts?userId=" + id)
+        http("https://jsonplaceholder.typicode.com/posts?userId=" + userId)
             .then(data => {
                 console.log(data)
                 setUserAllPosts(data)
