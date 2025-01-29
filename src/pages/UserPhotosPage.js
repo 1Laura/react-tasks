@@ -17,9 +17,9 @@ const UserPhotosPage = () => {
 
     return (
         <div className="container flex-wrap m-2 p-2">
-            {userPhotos.map(userPhoto =>
-                <img className="m-2 p-2" key={userPhoto.id} src="https://www.zooplus.de/magazin/wp-content/uploads/2017/03/fotolia_25521417.jpg" alt=""/>
-            )}
+            {userPhotos.map((userPhoto, index) =>
+                <img className="m-2 p-2" key={userPhoto.id} src={`https://picsum.photos/200/300?random=${index}`} alt=""/>
+                )}
         </div>
     );
 };
