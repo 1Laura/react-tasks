@@ -18,7 +18,7 @@ const UserPhotosPage = () => {
     return (
         <div className="container flex-wrap m-2 p-2">
             {userPhotos.map((userPhoto, index) =>
-                <img className="m-2 p-2" key={userPhoto.id} src={`https://picsum.photos/200/300?random=${index}`} alt=""/>
+                <img className="m-2 p-2" key={userPhoto.id} src={`https://picsum.photos/300/200?random=${index}`} alt=""/>
                 )}
         </div>
     );
