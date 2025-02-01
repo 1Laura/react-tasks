@@ -1,3 +1,0 @@
-you have two components one shows color, other sets color
-
-

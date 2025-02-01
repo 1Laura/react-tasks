@@ -1,19 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Component2 from "./components/Component2";
-import Component1 from "./components/Component1";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Toolbar from "./components/Toolbar";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
     return (
-        <div className="container">
-            <div className="row ">
-                <div className="col-6">
-                    <Component1/>
+        <div className="container-fluid">
+            <BrowserRouter>
+
+                <Toolbar/>
+
+                <div>
+                    <Routes>
+                        <Route path="/" element={<LoginPage/>}></Route>
+                        <Route path="/register" element={<RegisterPage/>}></Route>
+
+
+                    </Routes>
                 </div>
-                <div className="col-6">
-                    <Component2/>
-                </div>
-            </div>
+
+            </BrowserRouter>
         </div>
     );
 }
