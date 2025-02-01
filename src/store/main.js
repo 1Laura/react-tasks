@@ -1,8 +1,10 @@
-import {create} from "zustand/react";
+import {create} from "zustand";
 
 const useStore = create((set) => ({
     username: "Laura",
+    age: 41,
     // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-    // removeAllBears: () => set({ bears: 0 }),
-    updateBears: (newUsername) => set({username: newUsername}),
+    changeName: () => set({ username: "Erta" }),
+    updateUserName: (newUsername) => set({username: newUsername}),
 }))
+export default useStore;
