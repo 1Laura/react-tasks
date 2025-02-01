@@ -1,10 +1,7 @@
 import {create} from "zustand";
 
-const useStore = create((set) => ({
-    username: "Laura",
-    age: 41,
-    // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-    changeName: () => set({ username: "Erta" }),
-    updateUserName: (newUsername) => set({username: newUsername}),
+const useColorStore = create((set) => ({
+    color: "blue",//default
+    setColor: (newColor) => set({color: newColor}),
 }))
-export default useStore;
+export default useColorStore;

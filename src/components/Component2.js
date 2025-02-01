@@ -1,18 +1,20 @@
 import React from 'react';
-import useStore from "../store/main";
+import useColorStore from "../store/main";
 
 const Component2 = () => {
-    const {updateUserName,changeName} = useStore((state) => state);
-    function update() {
-        updateUserName("Seva");
-    }
+    const setColor = useColorStore((state) => state.setColor);
+    // const {setColor, darKazkasGaliButi} = useStore((state) => state);
 
     return (
         <div>
             <h3>Component 2</h3>
-            {/*<input type="text" placeholder={"enter name"} ref={nameRef}/>*/}
-            <button onClick={update}>Update</button>
-            <button onClick={changeName}>Change to default</button>
+            <h5>Set Color:</h5>
+            <input
+                type="text"
+                placeholder="Enter a color"
+                className="p-2 border rounded mt-2"
+                onChange={(e) => setColor(e.target.value)}
+            />
         </div>
     );
 };
