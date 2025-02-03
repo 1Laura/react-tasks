@@ -5,13 +5,13 @@ const ProfilePage = () => {
     const {currentUser, updateAvatar} = useUserStore();
     const avatarUrlRef = useRef();
 
-
     function updateUserAvatar() {
         const newUserAvatarUrl = avatarUrlRef.current.value;
         console.log(newUserAvatarUrl);
 
         if (newUserAvatarUrl.trim() !== "") {
             updateAvatar(newUserAvatarUrl);
+            avatarUrlRef.current.value = "";
         }
     }
 
