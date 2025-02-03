@@ -4,6 +4,7 @@ const useUserStore = create((set) => ({
     users: [],
     currentUser: null,
     error: null,
+    logUser: false,
 
     registerUser: (newUsername, newPassword) => {
         set((state) => {
@@ -29,11 +30,18 @@ const useUserStore = create((set) => ({
             const loggedUser = state.users.find(user => user.username === username && user.password === password);
             if (loggedUser) {
                 navigate("/profile");
-                return {currentUser: loggedUser, error: null};
+                return {currentUser: loggedUser, error: null, logUser: true};
             } else {
                 return {error: "Invalid username or password."};
             }
         })
+    },
+
+    logoutUser: (navigate) => {
+        set(() => {
+            navigate("/");
+            return {logUser: false};
+        });
     },
 
     updateAvatar: (newAvatarUrl) => {

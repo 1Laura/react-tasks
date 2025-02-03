@@ -22,6 +22,7 @@ const LoginPage = () => {
 
     return (
         <div className={"container"}>
+            <h2>Login page</h2>
             <input type="text" placeholder="Username" ref={usernameRef}/>
             <input type="password" placeholder="Password" ref={userPassword}/>
             <button onClick={loginWithValidation}>Login</button>

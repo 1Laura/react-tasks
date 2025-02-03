@@ -5,17 +5,6 @@
     margin-bottom: 30px;
 }
 
-.render {
-    width: 300px;
-    height: 180px;
-    padding: 10px;
-    justify-self: center;
-    border: 1px solid #757575;
-    border-radius: 5px;
-    margin: 10px;
-    min-height: fit-content;
-}
-
 .card {
     max-height: fit-content;
     width: 300px;
@@ -48,9 +37,4 @@
 
 input {
     margin: 5px;
-}
-
-.color-box {
-    width: 50px;
-    height: 20px;
 }

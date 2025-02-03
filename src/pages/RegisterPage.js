@@ -38,6 +38,7 @@ const RegisterPage = () => {
 
     return (
         <div className={"container"}>
+            <h2>Register page</h2>
             <input type="text" placeholder="Username" ref={usernameRef}/>
             <input type="password" placeholder="Enter Password" ref={userPass1Ref}/>
             <input type="password" placeholder="Repeat Password" ref={userPass2Ref}/>
