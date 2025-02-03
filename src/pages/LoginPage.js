@@ -1,15 +1,31 @@
-import React from 'react';
+import React, {use, useRef, useState} from 'react';
 import useUserStore from "../store/main";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
-    const {username, userPassword} = useUserStore((state) => state);
-    console.log(username, userPassword)
+    const {loginUser, error} = useUserStore();
+
+    const navigate = useNavigate();
+
+    const usernameRef = useRef();
+    const userPassword = useRef();
+
+    function loginWithValidation() {
+        const username = usernameRef.current.value.trim();
+        const password = userPassword.current.value.trim();
+        if (!username || !password) {
+            alert("Please enter both username and password.");
+            return
+        }
+        loginUser(username, password, navigate);
+    }
+
     return (
         <div className={"container"}>
-            <input type="text" placeholder={username}/>
-            <input type="password" placeholder={"Password 1"}/>
-            <button>Login</button>
-            //to profile page
+            <input type="text" placeholder="Username" ref={usernameRef}/>
+            <input type="password" placeholder="Password" ref={userPassword}/>
+            <button onClick={loginWithValidation}>Login</button>
+            {error && <p style={{color: "red"}}>{error}</p>}
         </div>
     );
 };

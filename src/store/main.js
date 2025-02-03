@@ -23,6 +23,19 @@ const useUserStore = create((set) => ({
             }
         });
     },
+
+    loginUser: (username, password, navigate) => {
+        set((state) => {
+            const loggedUser = state.users.find(user => user.username === username && user.password === password);
+            if (loggedUser) {
+                navigate("/profile");
+                return {currentUser: loggedUser, error: null};
+            } else {
+                return {error: "Invalid username or password."};
+            }
+        })
+    },
+
     setError: (newError) => set({error: newError}),
 }));
 
