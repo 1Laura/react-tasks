@@ -15,7 +15,7 @@ PROFILE
 in this page you can see own user information (take it from zustand "currentUser"). Also make it possible to change user image by providing new url
  
 USERS-LIST
-in this page just show list of registered user, show only their names and photos (No passwords ofcourse)
+in this page just show list of registered user, show only their names and photos (No passwords of course)
 
 Registracija:
 jei nera uzregistruotas, nera zustand array, ideti i array
