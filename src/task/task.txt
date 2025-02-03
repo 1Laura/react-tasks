@@ -18,7 +18,7 @@ USERS-LIST
 in this page just show list of registered user, show only their names and photos (No passwords ofcourse)
 
 Registracija:
-jei nera uzregistruotas, nera zustan array, ideti i array
+jei nera uzregistruotas, nera zustand array, ideti i array
 error parasyti jei kazkas negerai
 
 Login:
@@ -40,3 +40,6 @@ so it is possible to delete own comments
 to delete own posts
 
 to delete own profile (on profile deletion ask for user password, when deleting profile delete all user data, all posts, and comments, and likes)
+
+Chat:
+users lists, jei esu prisijunges ir esu useriu sarase galiu issiusti useriui zinute (gal modalas ar pan). Tarp conversation atsiranda zinutes. Conversations array su objektais su partisipants ir messages.

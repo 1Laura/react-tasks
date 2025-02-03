@@ -7,7 +7,7 @@ const LoginPage = () => {
     return (
         <div className={"container"}>
             <input type="text" placeholder={username}/>
-            <input type="text" placeholder={"Password 1"}/>
+            <input type="password" placeholder={"Password 1"}/>
             <button>Login</button>
             //to profile page
         </div>
