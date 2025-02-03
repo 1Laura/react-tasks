@@ -14,7 +14,7 @@ const useUserStore = create((set) => ({
             const newUser = {
                 username: newUsername,
                 password: newPassword,
-                avatar: "https://picsum.photos/200/300.jpg"
+                avatar: "https://fastly.picsum.photos/id/991/200/300.jpg?hmac=BdTxfK2wHhsGppraQzb5puxPKb5mPVzDaZPz8IiC44Q",
             };
             return {
                 users: [...state.users, newUser],
@@ -34,6 +34,17 @@ const useUserStore = create((set) => ({
                 return {error: "Invalid username or password."};
             }
         })
+    },
+
+    updateAvatar: (newAvatarUrl) => {
+        set((state => {
+            if (state.currentUser) {
+                const updateUserAvatar = {...state.currentUser, avatar: newAvatarUrl};
+                return {currentUser: updateUserAvatar};
+            } else {
+                return {};
+            }
+        }))
     },
 
     setError: (newError) => set({error: newError}),
