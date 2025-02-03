@@ -4,10 +4,11 @@ import useUserStore from "../store/main";
 const ProfilePage = () => {
     const {currentUser, updateAvatar} = useUserStore();
     const avatarUrlRef = useRef();
-    console.log(avatarUrlRef.current.value)
+
 
     function updateUserAvatar() {
-        const newUserAvatarUrl = avatarUrlRef;
+        const newUserAvatarUrl = avatarUrlRef.current.value;
+        console.log(newUserAvatarUrl);
         updateAvatar(newUserAvatarUrl);
     }
 
