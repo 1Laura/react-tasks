@@ -9,7 +9,10 @@ const ProfilePage = () => {
     function updateUserAvatar() {
         const newUserAvatarUrl = avatarUrlRef.current.value;
         console.log(newUserAvatarUrl);
-        updateAvatar(newUserAvatarUrl);
+
+        if (newUserAvatarUrl.trim() !== "") {
+            updateAvatar(newUserAvatarUrl);
+        }
     }
 
     return (
