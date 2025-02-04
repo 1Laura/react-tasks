@@ -26,6 +26,20 @@
     border-radius: 5px;
 }
 
+.post-card {
+    width: 162px;
+    border: 1px solid #6a6a6a;
+    border-radius: 5px;
+    justify-items: center;
+    margin: 5px;
+}
+
+.post-card img {
+    width: 160px;
+    border-radius: 5px;
+}
+
+
 .user-name {
     cursor: pointer;
 }

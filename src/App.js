@@ -9,8 +9,11 @@ import AllUsersPage from "./pages/AllUsersPage";
 import AllPostsPage from "./pages/AllPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import SinglePostPage from "./pages/SinglePostPage";
+import useUserStore from "./store/main";
 
 function App() {
+    const {id} = useUserStore();
+
     return (
         <div className="container-fluid">
             <BrowserRouter>
@@ -24,8 +27,9 @@ function App() {
                         <Route path="/register" element={<RegisterPage/>}></Route>
                         <Route path="/profile" element={<ProfilePage/>}></Route>
                         <Route path="/userslist" element={<AllUsersPage/>}></Route>
-                        <Route path="/posts" element={<AllPostsPage/>}></Route>
                         <Route path="/createpost" element={<CreatePostPage/>}></Route>
+                        <Route path="/posts" element={<AllPostsPage/>}></Route>
+                        <Route path="/post:id" element={<CreatePostPage/>}></Route>
                         <Route path="/post" element={<SinglePostPage/>}></Route>
                     </Routes>
                 </div>

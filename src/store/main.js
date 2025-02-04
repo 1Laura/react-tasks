@@ -56,11 +56,13 @@ const useUserStore = create((set) => ({
         }))
     },
 
-    createPost: (newImageUrl, newDescription) => {
+    createPost: (newImageUrl,newTitle, newDescription) => {
         set((state => {
             const newPost = {
                 imageUrl: newImageUrl,
                 description: newDescription,
+                title:newTitle,
+                id: new Date(Date.now()).toLocaleString(),
             };
             return {
                 posts: [...state.posts, newPost],
