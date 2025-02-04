@@ -5,6 +5,7 @@ const useUserStore = create((set) => ({
     currentUser: null,
     error: null,
     logUser: false,
+    posts: [],
 
     registerUser: (newUsername, newPassword) => {
         set((state) => {
@@ -51,6 +52,18 @@ const useUserStore = create((set) => ({
                 return {currentUser: updateUserAvatar};
             } else {
                 return {};
+            }
+        }))
+    },
+
+    createPost: (newImageUrl, newDescription) => {
+        set((state => {
+            const newPost = {
+                imageUrl: newImageUrl,
+                description: newDescription,
+            };
+            return {
+                posts: [...state.posts, newPost],
             }
         }))
     },

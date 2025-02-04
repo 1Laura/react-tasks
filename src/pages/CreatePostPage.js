@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import useUserStore from "../store/main";
+import {useNavigate} from "react-router-dom";
 
 const CreatePostPage = () => {
+    const {createPost} = useUserStore()
+    const navigate = useNavigate();
+    const imageUrlRef = useRef();
+    const descriptionRef = useRef();
+
+    function createUserPost() {
+        const imageUrl = imageUrlRef.current.value.trim();
+        const description = descriptionRef.current.value;
+        createPost(imageUrl, description)
+        navigate("/posts");
+    }
+
     return (
-        <div>
-            
+        <div className="container">
+            <h2>Create post</h2>
+            <div>
+                <input type="text" placeholder="Enter image url" ref={imageUrlRef}/>
+                <input type="text" placeholder="Enter description" ref={descriptionRef}/>
+                <button onClick={createUserPost}>Create post</button>
+            </div>
+
         </div>
     );
 };
