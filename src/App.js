@@ -12,8 +12,6 @@ import SinglePostPage from "./pages/SinglePostPage";
 import useUserStore from "./store/main";
 
 function App() {
-    const {id} = useUserStore();
-
     return (
         <div className="container-fluid">
             <BrowserRouter>
@@ -29,7 +27,7 @@ function App() {
                         <Route path="/userslist" element={<AllUsersPage/>}></Route>
                         <Route path="/createpost" element={<CreatePostPage/>}></Route>
                         <Route path="/posts" element={<AllPostsPage/>}></Route>
-                        <Route path="/post:id" element={<CreatePostPage/>}></Route>
+                        <Route path="/posts/:postId" element={<SinglePostPage/>}></Route>
                         <Route path="/post" element={<SinglePostPage/>}></Route>
                     </Routes>
                 </div>

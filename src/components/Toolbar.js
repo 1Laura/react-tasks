@@ -14,6 +14,7 @@ const Toolbar = () => {
                 {currentUser && logUser && <Link to="/profile" className="p-2">Profile</Link>}
                 {currentUser && logUser && <Link to="/userslist" className="p-2">Users list</Link>}
                 {currentUser && logUser && <Link to="/createpost" className="p-2">Create post</Link>}
+                {currentUser && logUser && <Link to="/posts" className="p-2">All posts</Link>}
                 {currentUser && logUser && <button onClick={() => logoutUser(navigate)}>Logout</button>}
             </div>
         </div>

@@ -41,7 +41,7 @@ const useUserStore = create((set) => ({
     logoutUser: (navigate) => {
         set(() => {
             navigate("/");
-            return {logUser: false};
+            return {logUser: false, currentUser:null};
         });
     },
 
@@ -62,7 +62,7 @@ const useUserStore = create((set) => ({
                 imageUrl: newImageUrl,
                 description: newDescription,
                 title:newTitle,
-                id: new Date(Date.now()).toLocaleString(),
+                id: Date.now().toString(),
             };
             return {
                 posts: [...state.posts, newPost],

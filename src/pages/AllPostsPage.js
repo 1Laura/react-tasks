@@ -1,6 +1,6 @@
 import React from 'react';
 import useUserStore from "../store/main";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const AllPostsPage = () => {
     const {posts} = useUserStore();
