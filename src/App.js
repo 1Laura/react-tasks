@@ -9,7 +9,6 @@ import AllUsersPage from "./pages/AllUsersPage";
 import AllPostsPage from "./pages/AllPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import SinglePostPage from "./pages/SinglePostPage";
-import useUserStore from "./store/main";
 
 function App() {
     return (

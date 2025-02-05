@@ -5,11 +5,12 @@ import useUserStore from "../store/main";
 const SinglePostPage = () => {
     const {postId} = useParams();
     const {posts} = useUserStore();
-    const post = posts.find(post=>post.id===postId)
+    const post = posts.find(post => post.id === postId);
+
     return (
-        <div>
+        <div className="container">
+            <img src={post.imageUrl} alt=""/>
             <h2>{post.title}</h2>
-            <img src={post.imageUrl} alt="" />
             <p>{post.description}</p>
         </div>
     );
