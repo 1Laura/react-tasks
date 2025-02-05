@@ -11,7 +11,6 @@ const AllPostsPage = () => {
                 <div className="post-card flex-wrap" key={index}>
                     <img src={post.imageUrl} alt=""/>
                     <p>{post.title}</p>
-                    <p>{post.id}</p>
                     <Link to={`/posts/${post.id}`}>Read More...</Link>
                 </div>
             )}

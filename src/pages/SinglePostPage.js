@@ -1,17 +1,47 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {useParams} from "react-router-dom";
 import useUserStore from "../store/main";
 
 const SinglePostPage = () => {
     const {postId} = useParams();
-    const {posts} = useUserStore();
+
+    const {posts, addComment, currentUser} = useUserStore();
+
+    const commentRef = useRef();
+
     const post = posts.find(post => post.id === postId);
+    console.log(post)
+
+    function createPostComment() {
+        const newComment = commentRef.current.value.trim();
+        if (newComment) {
+            addComment(postId, currentUser.username, newComment);
+            commentRef.current.value = "";
+        }
+    }
 
     return (
         <div className="container">
-            <img src={post.imageUrl} alt=""/>
-            <h2>{post.title}</h2>
-            <p>{post.description}</p>
+            <div>
+                <img src={post.imageUrl} alt=""/>
+                <h2>{post.title}</h2>
+                <p>{post.description}</p>
+            </div>
+            <div>
+                <h5>Comments:</h5>
+                {post.comments && post.comments.length > 0 ? (
+                    post.comments.map((comment, index) =>
+                        <p key={index}><strong>{comment.user}: </strong>{comment.text}</p>
+                    )) : (
+                    <p>No comments yet.</p>
+                )}
+
+            </div>
+            <div>
+                <h5>Write Comments:</h5>
+                <input type="text" placeholder="Enter your comment" ref={commentRef}/>
+                <button onClick={createPostComment}>Create comment</button>
+            </div>
         </div>
     );
 };

@@ -41,7 +41,7 @@ const useUserStore = create((set) => ({
     logoutUser: (navigate) => {
         set(() => {
             navigate("/");
-            return {logUser: false, currentUser:null};
+            return {logUser: false, currentUser: null};
         });
     },
 
@@ -56,17 +56,32 @@ const useUserStore = create((set) => ({
         }))
     },
 
-    createPost: (newImageUrl,newTitle, newDescription) => {
+    createPost: (newImageUrl, newTitle, newDescription) => {
         set((state => {
             const newPost = {
                 imageUrl: newImageUrl,
                 description: newDescription,
-                title:newTitle,
+                title: newTitle,
                 id: Date.now().toString(),
+                comments: [],
             };
             return {
                 posts: [...state.posts, newPost],
             }
+        }))
+    },
+    addComment: (newPostId, newUsername, newCommentText) => {
+        set((state => {
+            const updatePosts = state.posts.map(post => {
+                if (post.id === newPostId) {
+                    return {
+                        ...post,
+                        comments: [...post.comments, {user: newUsername, text: newCommentText}]
+                    };
+                }
+                return {post}
+            })
+            return {posts: updatePosts}
         }))
     },
 
