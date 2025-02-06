@@ -5,12 +5,11 @@ import useUserStore from "../store/main";
 const SinglePostPage = () => {
     const {postId} = useParams();
 
-    const {posts, addComment, currentUser} = useUserStore();
+    const {posts, addComment, currentUser, likePost} = useUserStore();
 
     const commentRef = useRef();
 
     const post = posts.find(post => post.id === postId);
-    console.log(post)
 
     function createPostComment() {
         const newComment = commentRef.current.value.trim();
@@ -20,12 +19,18 @@ const SinglePostPage = () => {
         }
     }
 
+    function likeUserPost() {
+        likePost(postId, currentUser.username);
+        console.log("sdsfasfd")
+    }
+
     return (
         <div className="container">
             <div>
                 <img src={post.imageUrl} alt=""/>
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
+                <button onClick={likeUserPost} disabled={post.likedBy.includes(currentUser?.username)}>Like {post.likes}</button>
             </div>
             <div>
                 <h5>Comments:</h5>

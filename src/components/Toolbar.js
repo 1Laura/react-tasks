@@ -5,7 +5,7 @@ import useUserStore from "../store/main";
 const Toolbar = () => {
     const {currentUser, logUser, logoutUser} = useUserStore();
     const navigate = useNavigate();
-
+    console.log(currentUser)
     return (
         <div className="container-fluid">
             <div className="m-3">
@@ -16,6 +16,8 @@ const Toolbar = () => {
                 {currentUser && logUser && <Link to="/createpost" className="p-2">Create post</Link>}
                 {currentUser && logUser && <Link to="/posts" className="p-2">All posts</Link>}
                 {currentUser && logUser && <button onClick={() => logoutUser(navigate)}>Logout</button>}
+                {currentUser && logUser && <span className="px-3">{currentUser.username}</span>}
+
             </div>
         </div>
     );

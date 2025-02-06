@@ -64,6 +64,8 @@ const useUserStore = create((set) => ({
                 title: newTitle,
                 id: Date.now().toString(),
                 comments: [],
+                likes: 0,
+                likedBy: [],
             };
             return {
                 posts: [...state.posts, newPost],
@@ -83,6 +85,22 @@ const useUserStore = create((set) => ({
             })
             return {posts: updatePosts}
         }))
+    },
+
+    likePost: (postId, username) => {
+        set((state) => {
+            const updatePosts = state.posts.map(post => {
+                if (post.id === postId && !post.likedBy.includes(username)) {
+                    return {
+                        ...post,
+                        likes: post.likes + 1,
+                        likedBy: [...post.likedBy, username]
+                    };
+                }
+                return {post}
+            })
+            return {posts: updatePosts}
+        })
     },
 
     setError: (newError) => set({error: newError}),
