@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {useParams} from "react-router-dom";
 import useUserStore from "../store/main";
+import button from "bootstrap/js/src/button";
 
 const SinglePostPage = () => {
     const {postId} = useParams();
@@ -23,6 +24,9 @@ const SinglePostPage = () => {
         likePost(postId, currentUser.username);
         console.log("sdsfasfd")
     }
+    function deleteUserComment(postId, commentIndex) {
+        useUserStore.getState().deleteComment(postId, currentUser.username, commentIndex);
+    }
 
     return (
         <div className="container">
@@ -36,7 +40,10 @@ const SinglePostPage = () => {
                 <h5>Comments:</h5>
                 {post.comments && post.comments.length > 0 ? (
                     post.comments.map((comment, index) =>
-                        <p key={index}><strong>{comment.user}: </strong>{comment.text}</p>
+                        <div>
+                            <p key={index}><strong>{comment.user}: </strong>{comment.text}</p>
+                            <button onClick={()=>deleteUserComment(postId, index)}>Delete comment</button>
+                        </div>
                     )) : (
                     <p>No comments yet.</p>
                 )}

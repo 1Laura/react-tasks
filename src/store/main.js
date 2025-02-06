@@ -103,6 +103,21 @@ const useUserStore = create((set) => ({
         })
     },
 
+    deleteComment: (newPostId, newUsername, newCommentIndex) => {
+        set((state) => {
+            const updatePosts = state.posts.map(post => {
+                if (post.id === newPostId) {
+                    return {
+                        ...post,
+                        comments: post.comments.filter((_, index) => index !== newCommentIndex || post.comments[index].user !== newUsername)
+                    };
+                }
+                return {post}
+            })
+            return {posts: updatePosts}
+        })
+    },
+
     setError: (newError) => set({error: newError}),
 }));
 
